@@ -21,9 +21,10 @@ Description: A Web 2.0 design with fluid width suitable for blogs and small webs
         <!-- start header -->
         <div id="header">
             <div id="logo">
-                <h1>
-                    <t:pagelink page="index">org.svfc57:svfc57</t:pagelink>
-                </h1>
+                <h1>57</h1>
+                <h2>
+                    <t:pagelink page="index">Shawangunk Valley Fire Company</t:pagelink>
+                </h2>
             </div>
             <div id="menu">
                 <ul>
@@ -36,29 +37,17 @@ Description: A Web 2.0 design with fluid width suitable for blogs and small webs
         <!-- end header -->
         <!-- start page -->
         <div id="page">
-            <!-- start sidebar -->
-            <div id="sidebar">
-                <ul>
-                    <li id="search" style="background: none;">
-                    </li>
-                    <li t:type="if" test="sidebar">
-                        <h2>${sidebarTitle}</h2>
-                        <div class="sidebar-content">
-                            <t:delegate to="sidebar"/>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <!-- end sidebar -->
-            <!-- start content -->
             <div id="content">
-                <div class="post">
+                <div id="colOne">
                     <div class="title">
                         <h2>${title}</h2>
                     </div>
                     <div class="entry">
                         <t:body/>
                     </div>
+                </div>
+                <div id="colTwo">
+                	<h2>Category</h2>
                 </div>
             </div>
             <!-- end content -->
@@ -68,13 +57,7 @@ Description: A Web 2.0 design with fluid width suitable for blogs and small webs
         <!-- start footer -->
         <div id="footer">
             <p class="legal">
-                &copy;2009 org.svfc57. All Rights Reserved.
-                &nbsp;&nbsp;&bull;&nbsp;&nbsp;
-                Design by
-                <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>
-                &nbsp;&nbsp;&bull;&nbsp;&nbsp;
-                Icons by
-                <a href="http://famfamfam.com/">FAMFAMFAM</a>.
+                &copy;2011 Shawangunk Valley Fire Company. All Rights Reserved.
             </p>
         </div>
         <!-- end footer -->
