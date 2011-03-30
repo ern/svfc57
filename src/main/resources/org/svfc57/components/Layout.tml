@@ -46,9 +46,9 @@ Description: A Web 2.0 design with fluid width suitable for blogs and small webs
                     <div class="entry">
                         <t:body/>
                     </div>
-                </div>
-                <div id="colTwo">
-                	<h2>Category</h2>
+   			    </div>
+               	<div id="colTwo">
+			      	<h2>Events</h2>
                 </div>
             </div>
             <!-- end content -->

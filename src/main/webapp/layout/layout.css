@@ -122,6 +122,13 @@ a:hover {
 	border-left: 2px solid #8A0600;
 }
 
+#colOne .highlight {
+	margin-bottom: 30px;
+	background: #210100;
+	border-left: 2px solid #8A0600;
+	text-align: left;
+}
+
 #colOne .credits p {
 	margin: 0;
 	padding: 0;
