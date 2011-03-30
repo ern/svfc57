@@ -2,6 +2,16 @@
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
       xmlns:p="tapestry:parameter">
 
-    <p>Contact</p>
-
+    
+    <div class="highlight">
+    	 <table width="100%"><tr><td width="30%">${message:tphone}</td><td width="70%">${message:tphnum}</td></tr></table>
+    </div>
+	<div class="highlight">
+    	<table width="100%"><tr><td width="30%">${message:addres}</td>
+    	<td width="70%">
+    	${message:addln1}<br/>
+		${message:addln2}<br/>
+		${message:addln3}</td>
+		</tr></table>
+    </div>
 </html>
