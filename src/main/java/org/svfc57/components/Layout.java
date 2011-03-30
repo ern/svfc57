@@ -4,11 +4,12 @@ import org.apache.tapestry5.*;
 import org.apache.tapestry5.annotations.*;
 import org.apache.tapestry5.ioc.annotations.*;
 import org.apache.tapestry5.BindingConstants;
+import org.apache.xalan.templates.Stylesheet;
 
 /**
  * Layout component for pages of application svfc57.
  */
-@IncludeStylesheet("context:layout/layout.css")
+@Import(stylesheet="context:layout/layout.css")
 public class Layout
 {
     /** The page title, for the <title> element and the <h1> element. */
@@ -39,6 +40,6 @@ public class Layout
 
     public String[] getPageNames()
     {
-      return new String[] { "Index", "Apparatus", "About", "Contact" };
+      return new String[] { "Apparatus", "About", "Contact" };
     }
 }
