@@ -2,12 +2,11 @@ package org.svfc57.services;
 
 import java.io.IOException;
 
-import org.apache.tapestry5.*;
+import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
-import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.ioc.annotations.InjectService;
 import org.apache.tapestry5.ioc.annotations.Local;
 import org.apache.tapestry5.services.AliasContribution;
@@ -16,11 +15,10 @@ import org.apache.tapestry5.services.RequestFilter;
 import org.apache.tapestry5.services.RequestHandler;
 import org.apache.tapestry5.services.Response;
 import org.slf4j.Logger;
-import org.springframework.security.providers.AuthenticationProvider;
-import org.springframework.security.providers.dao.SaltSource;
-import org.springframework.security.providers.encoding.PasswordEncoder;
-import org.springframework.security.providers.encoding.ShaPasswordEncoder;
-import org.springframework.security.userdetails.UserDetailsService;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.encoding.PasswordEncoder;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  * This module is automatically included as part of the Tapestry IoC Registry, it's a good place to
@@ -36,6 +34,8 @@ public class AppModule
         // Use service builder methods (example below) when the implementation
         // is provided inline, or requires more initialization than simply
         // invoking the constructor.
+    	
+    	binder.bind(UserDetailsService.class, UserServiceImpl.class);
     }
     
     
@@ -151,11 +151,5 @@ public class AppModule
 			@InjectService("DaoAuthenticationProvider") AuthenticationProvider daoAuthenticationProvider) {
 
 		configuration.add("daoAuthenticationProvider", daoAuthenticationProvider);
-	}
-    
-	public static UserDetailsService buildUserDetailsService(
-			@Inject PasswordEncoder encoder, @Inject SaltSource salt) {
-
-		return new UserServiceImpl(encoder, salt);
-	}
+	}   
 }

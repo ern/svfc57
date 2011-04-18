@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.hibernate.Session;
-import org.springframework.security.annotation.Secured;
+import org.springframework.security.access.annotation.Secured;
 import org.svfc57.entities.Person;
 
-//@Secured("ROLE_ADMIN")
+@Secured("ROLE_ADMIN")
 public class Index {
 
 	@Inject

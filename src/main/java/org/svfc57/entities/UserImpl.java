@@ -1,10 +1,11 @@
 package org.svfc57.entities;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.apache.tapestry5.ioc.internal.util.CollectionFactory;
-import org.springframework.security.GrantedAuthority;
-import org.springframework.security.userdetails.UserDetails;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.svfc57.api.User;
 
 public class UserImpl implements User, UserDetails {
@@ -28,13 +29,9 @@ public class UserImpl implements User, UserDetails {
 		authorities.add( authority );
 	}
 	
-	public GrantedAuthority[] getAuthorities() {
+	public Collection<GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		GrantedAuthority[] authList = new GrantedAuthority[authorities.size()]; 
-		for (int i = 0; i < authorities.size(); i++) {
-			authList[i] = authorities.get(i);
-		}
-		return authList;
+		return authorities;
 	}
 
 	@Override

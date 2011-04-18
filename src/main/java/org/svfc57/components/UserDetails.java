@@ -1,8 +1,8 @@
 package org.svfc57.components;
 
 import org.apache.tapestry5.MarkupWriter;
-import org.springframework.security.Authentication;
-import org.springframework.security.context.SecurityContextHolder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 public class UserDetails {
 

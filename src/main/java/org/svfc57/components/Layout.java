@@ -47,6 +47,7 @@ public class Layout
       return new String[] { "Apparatus", "About", "Contact" };
     }
     
+    @Log
 	@OnEvent(component = "logout")
 	public void doLogout() {
 		logoutService.logout();
