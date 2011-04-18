@@ -1,5 +1,6 @@
 <html t:type="layout" title="Home"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      t:rightColTitle="Right Column"
       xmlns:p="tapestry:parameter">
         <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
@@ -9,6 +10,10 @@
 		<p class="file"><small>${currentTime}</small></p>
 		<p class="posted">Posted by: Earle</p>
     </div>
+    
+    <p:rightCol>
+    	Right Column
+    </p:rightCol>
 
 	
 

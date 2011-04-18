@@ -1,10 +1,11 @@
 package org.svfc57.components;
 
+import nu.localhost.tapestry5.springsecurity.services.LogoutService;
+
 import org.apache.tapestry5.*;
 import org.apache.tapestry5.annotations.*;
 import org.apache.tapestry5.ioc.annotations.*;
 import org.apache.tapestry5.BindingConstants;
-import org.apache.xalan.templates.Stylesheet;
 
 /**
  * Layout component for pages of application svfc57.
@@ -22,14 +23,17 @@ public class Layout
 
     @Property
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
-    private String sidebarTitle;
+    private String rightColTitle;
 
     @Property
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
-    private Block sidebar;
+    private Block rightCol;
 
     @Inject
     private ComponentResources resources;
+
+	@Inject
+	private LogoutService logoutService;
 
     public String getClassForPageName()
     {
@@ -42,4 +46,9 @@ public class Layout
     {
       return new String[] { "Apparatus", "About", "Contact" };
     }
+    
+	@OnEvent(component = "logout")
+	public void doLogout() {
+		logoutService.logout();
+	}
 }

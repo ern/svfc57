@@ -3,15 +3,24 @@ package org.svfc57.services;
 import java.io.IOException;
 
 import org.apache.tapestry5.*;
+import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
+import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.ioc.annotations.InjectService;
 import org.apache.tapestry5.ioc.annotations.Local;
+import org.apache.tapestry5.services.AliasContribution;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.RequestFilter;
 import org.apache.tapestry5.services.RequestHandler;
 import org.apache.tapestry5.services.Response;
 import org.slf4j.Logger;
+import org.springframework.security.providers.AuthenticationProvider;
+import org.springframework.security.providers.dao.SaltSource;
+import org.springframework.security.providers.encoding.PasswordEncoder;
+import org.springframework.security.providers.encoding.ShaPasswordEncoder;
+import org.springframework.security.userdetails.UserDetailsService;
 
 /**
  * This module is automatically included as part of the Tapestry IoC Registry, it's a good place to
@@ -51,6 +60,20 @@ public class AppModule
         // header. If existing assets are changed, the version number should also
         // change, to force the browser to download new versions.
         configuration.add(SymbolConstants.APPLICATION_VERSION, "1.0-SNAPSHOT");
+        
+		configuration.add("tapestry.default-cookie-max-age", "31536000");
+
+		configuration.add("spring-security.failure.url", "/login/failed");
+		configuration.add("spring-security.accessDenied.url", "/forbidden");
+		configuration.add("spring-security.check.url", "/j_spring_security_check");
+		configuration.add("spring-security.target.url", "/");
+		configuration.add("spring-security.afterlogout.url", "/");
+		configuration.add("spring-security.rememberme.key", "REMEMBERMEKEY");
+		configuration.add("spring-security.loginform.url", "/login");
+		configuration.add("spring-security.force.ssl.login", "false");
+		configuration.add("spring-security.anonymous.key", "acegi_anonymous");
+		configuration.add("spring-security.anonymous.attribute", "anonymous,ROLE_ANONYMOUS");
+		configuration.add("spring-security.password.salt", "DEADBEEF");
     }
     
 
@@ -116,4 +139,23 @@ public class AppModule
         
         configuration.add("Timing", filter);
     }
+    
+	public static void contributeAlias(
+			Configuration<AliasContribution<PasswordEncoder>> configuration) {
+
+		configuration.add(AliasContribution.create(PasswordEncoder.class, new ShaPasswordEncoder()));
+	}
+    
+	public static void contributeProviderManager(
+			OrderedConfiguration<AuthenticationProvider> configuration,
+			@InjectService("DaoAuthenticationProvider") AuthenticationProvider daoAuthenticationProvider) {
+
+		configuration.add("daoAuthenticationProvider", daoAuthenticationProvider);
+	}
+    
+	public static UserDetailsService buildUserDetailsService(
+			@Inject PasswordEncoder encoder, @Inject SaltSource salt) {
+
+		return new UserServiceImpl(encoder, salt);
+	}
 }

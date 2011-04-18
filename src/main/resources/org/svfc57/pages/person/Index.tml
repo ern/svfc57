@@ -1,0 +1,7 @@
+<html t:type="layout" title="List People"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
+
+	<p><t:pagelink page="person/create">Create New Person</t:pagelink></p>
+	
+	<t:grid source="persons" class="thead" reorder="firstName,lastName,streetOne,streetTwo,city,state,zip,email,phone" />
+</html>

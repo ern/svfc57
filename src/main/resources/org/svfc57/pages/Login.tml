@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html t:type="layout" title="Login"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
+        <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+
+	<form action="${loginCheckUrl}" method="POST">
+	<t:if test="failed">Username and/or password was wrong!<br /></t:if>
+	<label class="username" for="j_username">Username:</label>
+	<input class="username" name="j_username" type="text" size="10" maxlength="30"/>
+	<label class="password" for="j_password">Password</label>
+	<input class="password" name="j_password" type="password" size="10" maxlength="30"/>
+	<input id="submit" class="submit" type="submit" value="log in"/>
+	</form>
+</html>

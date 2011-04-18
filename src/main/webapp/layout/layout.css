@@ -41,18 +41,25 @@ a:hover {
 	padding: 0;
 	text-transform: lowercase;
 	text-decoration: none;
-	color: #FFFFFF;
+	
 }
 
 #logo h1 {
-	padding: 30px 0 0 0;
+	padding: 20px 0 0 0;
 	letter-spacing: -2px;
-	font-size: 4.5em;
+	font-size: 5em;
+	color: #000000;
 }
 
-#logo h2 {
+#logo h2 a {
 	letter-spacing: 1px;
-	font-size: 1em;
+	font-size: .8em;
+	color: #FFFFFF
+}
+
+#login * {
+	float: right;
+	color: #FFFFFF;
 }
 
 /* Menu */
@@ -90,6 +97,39 @@ a:hover {
 	color: #FFFFFF;
 }
 
+#authmenu {
+	float: right;
+}
+
+#authmenu ul {
+	margin: 0;
+	padding: 154px 0 0 0;
+	list-style: none;
+}
+
+#authmenu li {
+	display: inline;
+}
+
+#authmenu a {
+	display: block;
+	float: left;
+	padding: 5px 20px;
+	text-decoration: none;
+	text-transform: lowercase;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+#authmenu a:hover, #authmenu .active a {
+	padding: 5px 19px;
+	background: #2F1A1A url(images/img2.gif) repeat-x left bottom;
+	border: 1px solid #1E1010;
+	border-right-color: #7A6D6D;
+	border-bottom-color: #7A6D6D;
+	color: #FFFFFF;
+}
+
 /* Content */
 
 #content {
@@ -107,7 +147,7 @@ a:hover {
 
 #colOne h2 {
 	margin-top: 0;
-	font-size: 2em;
+	font-size: 1.5em;
 	color: #CCCCCC;
 }
 
@@ -203,4 +243,10 @@ a:hover {
 	padding: 0;
 	text-align: center;
 	font-size: smaller;
+}
+
+.thead th {
+	color: red;
+	font-family: Arial;
+	font-size: .8em;
 }
