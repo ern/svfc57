@@ -10,13 +10,13 @@
     <body>
         <!-- start header -->
         <div id="header">
-            <div id="logo">
-                <h1>57</h1>
-                <h2>
-                    <t:pagelink page="index">Shawangunk Valley Fire Company</t:pagelink>
-                </h2>
-            </div>
-            <div id="login">
+        	<div id="adminmenu">
+            	<t:security.ifloggedin>
+					<!-- this area is only visible to logged in users -->
+					<t:pagelink page="person/create">New Person</t:pagelink>
+				</t:security.ifloggedin>
+        	</div>
+        	<div id="login">
             	<span>
             	<t:security.ifloggedin>
 					<!-- this area is only visible to logged in users -->
@@ -27,6 +27,13 @@
 				</t:parameter>
 				</t:security.ifloggedin>
 				</span>
+            </div>
+        	<br />
+            <div id="logo">
+                <h1>57</h1>
+                <h2>
+                    <t:pagelink page="index">Shawangunk Valley Fire Company</t:pagelink>
+                </h2>
             </div>
             <div id="menu">
                 <ul>
