@@ -6,6 +6,8 @@ import org.apache.tapestry5.*;
 import org.apache.tapestry5.annotations.*;
 import org.apache.tapestry5.ioc.annotations.*;
 import org.apache.tapestry5.BindingConstants;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  * Layout component for pages of application svfc57.
@@ -20,6 +22,11 @@ public class Layout
 
     @Property
     private String pageName;
+    
+    private Authentication currentUser;
+    
+    @Property
+    private String userName;
 
     @Property
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
@@ -34,7 +41,7 @@ public class Layout
 
 	@Inject
 	private LogoutService logoutService;
-
+	
     public String getClassForPageName()
     {
       return resources.getPageName().equalsIgnoreCase(pageName)
@@ -52,4 +59,14 @@ public class Layout
 	public void doLogout() {
 		logoutService.logout();
 	}
+    
+    boolean beginRender( MarkupWriter writer ) throws Exception {
+
+        currentUser = SecurityContextHolder.getContext().getAuthentication();
+
+        if ( null != currentUser ) {
+            userName = currentUser.getName();
+        }
+        return true;
+    }
 }

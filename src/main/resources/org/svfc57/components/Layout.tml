@@ -17,14 +17,16 @@
                 </h2>
             </div>
             <div id="login">
+            	<span>
             	<t:security.ifloggedin>
 					<!-- this area is only visible to logged in users -->
-					<a t:type="actionlink" t:id="logout">Logout</a>
+					Hello, ${userName}&nbsp;|&nbsp;<a t:type="actionlink" t:id="logout">Logout</a>
 				<t:parameter name="else">
 					<!-- this block is visible if you are not logged in -->
 					<t:pagelink page="login">Login</t:pagelink>
 				</t:parameter>
 				</t:security.ifloggedin>
+				</span>
             </div>
             <div id="menu">
                 <ul>

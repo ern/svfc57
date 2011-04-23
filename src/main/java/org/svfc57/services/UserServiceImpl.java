@@ -13,7 +13,7 @@ import org.svfc57.entities.UserImpl;
 
 public class UserServiceImpl implements UserService, UserDetailsService {
 
-	private UserImpl milli;
+	private UserImpl admin;
 	private UserImpl mona;
 
     public UserServiceImpl( PasswordEncoder encoder, SaltSource salt ) {
@@ -21,10 +21,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     	
     	GrantedAuthority user = new GrantedAuthorityImpl( "ROLE_DEFAULT" );
         
-        milli = new UserImpl( "milli" );
-        milli.addAuthority( user );
-        milli.addAuthority( new GrantedAuthorityImpl( "ROLE_ADMIN" ) );
-        milli.setPassword( encoder.encodePassword( "milli", salt.getSalt( milli ) ) );
+        admin = new UserImpl( "admin" );
+        admin.addAuthority( user );
+        admin.addAuthority( new GrantedAuthorityImpl( "ROLE_ADMIN" ) );
+        admin.setPassword( encoder.encodePassword( "admin", salt.getSalt( admin ) ) );
 
         mona = new UserImpl( "mona");
         mona.addAuthority( user );
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         throws UsernameNotFoundException,
         DataAccessException {
 
-        if ( "milli".equals( name ) ) return milli;
+        if ( "admin".equals( name ) ) return admin;
         if ( "mona".equals( name ) ) return mona;
         return null;
     }
