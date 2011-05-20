@@ -111,6 +111,7 @@ a:hover {
 #adminmenu a {
 	float: left;
 	color: #FFFFFF;
+	padding-right: 10px;
 }
 
 #adminmenu a:hover, #authmenu .active a {

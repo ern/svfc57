@@ -13,14 +13,15 @@
         	<div id="adminmenu">
             	<t:security.ifloggedin>
 					<!-- this area is only visible to logged in users -->
-					<t:pagelink page="person/create">New Person</t:pagelink>
+					<t:pagelink page="person/index">People</t:pagelink>
+					<t:pagelink page="announcement/index">Announcements</t:pagelink>
 				</t:security.ifloggedin>
         	</div>
         	<div id="login">
             	<span>
             	<t:security.ifloggedin>
 					<!-- this area is only visible to logged in users -->
-					Hello, ${userName}&nbsp;|&nbsp;<a t:type="actionlink" t:id="logout">Logout</a>
+					Hello, ${userName}&nbsp;|&nbsp;<t:pageLink page="logout">Logout</t:pageLink>
 				<t:parameter name="else">
 					<!-- this block is visible if you are not logged in -->
 					<t:pagelink page="login">Login</t:pagelink>

@@ -1,7 +1,5 @@
 package org.svfc57.components;
 
-import nu.localhost.tapestry5.springsecurity.services.LogoutService;
-
 import org.apache.tapestry5.*;
 import org.apache.tapestry5.annotations.*;
 import org.apache.tapestry5.ioc.annotations.*;
@@ -38,9 +36,6 @@ public class Layout
 
     @Inject
     private ComponentResources resources;
-
-	@Inject
-	private LogoutService logoutService;
 	
     public String getClassForPageName()
     {
@@ -54,11 +49,13 @@ public class Layout
       return new String[] { "Apparatus", "About", "Contact" };
     }
 
-    @Log
+    /*@Log
 	@OnEvent(component = "logout")
 	public void doLogout() {
-		logoutService.logout();
-	}
+    	// logoutService.logout();
+    	// Redirect to a page to safely logout
+    	
+	}*/
     
     boolean beginRender( MarkupWriter writer ) throws Exception {
 

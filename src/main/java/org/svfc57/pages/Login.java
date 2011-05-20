@@ -24,7 +24,7 @@ public class Login {
 	}
 
 	@Log
-	void onActivate(String extra) {
+	public void onActivate(String extra) {
 		if (extra.equals("failed")) {
 			failed = true;
 		}

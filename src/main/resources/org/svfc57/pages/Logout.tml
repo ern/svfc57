@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html t:type="layout" title="Logout"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:p="tapestry:parameter">
+        <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+
+   	<t:security.ifloggedin>
+		<!-- this area is only visible to logged in users -->
+		<p>For som reason you are still logged in!</p>
+		<t:parameter name="else">
+			<!-- this block is visible if you are not logged in -->
+			<p>You are now logged out...</p>
+		</t:parameter>
+	</t:security.ifloggedin>
+
+</html>
