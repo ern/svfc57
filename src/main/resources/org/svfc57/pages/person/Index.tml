@@ -1,5 +1,6 @@
 <html t:type="layout" title="List People"
-      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:p="tapestry:parameter">
 
 	<p><t:pagelink page="person/create">Create New Person</t:pagelink></p>
 	

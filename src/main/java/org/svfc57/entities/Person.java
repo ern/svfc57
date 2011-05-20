@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import org.apache.tapestry5.beaneditor.NonVisual;
 import org.apache.tapestry5.beaneditor.Validate;
 
-@Entity
+@Entity(name="Person")
 public class Person {
 	
 	@Id
