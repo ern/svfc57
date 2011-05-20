@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html t:type="layout" title="Announcements"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:p="tapestry:parameter">
+        <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+
+	<p><t:pagelink page="announcement/create" style="padding-right: 10px;">Create Announcement</t:pagelink></p>
+	<!--  <p><t:pagelink page="announcement/edit" style="padding-right: 10px;">Edit Announcement</t:pagelink></p> -->
+	
+	<!-- <t:loop source="announcements" value="announcement">
+    	<a t:type="pagelink" page="editannouncement" context="announcement.id">${announcement.title}</a>
+	</t:loop> -->
+	<t:grid source="announcements" class="thead" reorder="title,text,active,showAfterDate,showBeforeDate" />
+
+</html>
