@@ -5,12 +5,12 @@
       xmlns:p="tapestry:parameter">
         <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
-	<p><t:pagelink page="announcement/create" style="padding-right: 10px;">Create Announcement</t:pagelink></p>
-	<!--  <p><t:pagelink page="announcement/edit" style="padding-right: 10px;">Edit Announcement</t:pagelink></p> -->
+	<t:pagelink page="announcement/create" style="padding-right: 10px;">Create Announcement</t:pagelink>
+	<!--  <p><t:pagelink	 page="announcement/edit" style="padding-right: 10px;">Edit Announcement</t:pagelink></p> -->
 	
-	<!-- <t:loop source="announcements" value="announcement">
-    	<a t:type="pagelink" page="editannouncement" context="announcement.id">${announcement.title}</a>
-	</t:loop> -->
-	<t:grid source="announcements" class="thead" reorder="title,text,active,showAfterDate,showBeforeDate" />
+	<t:loop source="announcements" value="announcement">
+    	<a t:type="actionlink" t:id="select" context="announcement.id">${announcement.title}</a>
+	</t:loop>
+	<!-- <t:grid source="announcements" class="thead" reorder="title,text,active,showAfterDate,showBeforeDate" /> -->
 
 </html>

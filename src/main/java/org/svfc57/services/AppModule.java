@@ -3,12 +3,15 @@ package org.svfc57.services;
 import java.io.IOException;
 
 import org.apache.tapestry5.SymbolConstants;
+import org.apache.tapestry5.hibernate.HibernateTransactionAdvisor;
 import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
+import org.apache.tapestry5.ioc.MethodAdviceReceiver;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.InjectService;
 import org.apache.tapestry5.ioc.annotations.Local;
+import org.apache.tapestry5.ioc.annotations.Match;
 import org.apache.tapestry5.services.AliasContribution;
 import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.RequestFilter;
@@ -19,6 +22,8 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.svfc57.dao.AnnouncementDAO;
+import org.svfc57.dao.AnnouncementDAOImpl;
 
 /**
  * This module is automatically included as part of the Tapestry IoC Registry, it's a good place to
@@ -36,8 +41,14 @@ public class AppModule
         // invoking the constructor.
     	
     	binder.bind(UserDetailsService.class, UserServiceImpl.class);
+    	binder.bind(AnnouncementDAO.class, AnnouncementDAOImpl.class);
     }
     
+	@Match("*DAO")
+	public static void adviseTransactions(HibernateTransactionAdvisor advisor,
+			MethodAdviceReceiver receiver) {
+		advisor.addTransactionCommitAdvice(receiver);
+	}
     
     public static void contributeApplicationDefaults(
             MappedConfiguration<String, String> configuration)
