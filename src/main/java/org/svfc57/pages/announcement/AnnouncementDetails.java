@@ -1,6 +1,5 @@
 package org.svfc57.pages.announcement;
 
-import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.svfc57.dao.AnnouncementDAO;
@@ -11,7 +10,6 @@ public class AnnouncementDetails {
 	@Property
 	private Announcement announcement;
 
-	@Persist
 	private long announcementId;
 
 	@Inject
