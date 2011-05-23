@@ -9,24 +9,24 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.svfc57.api.UserService;
-import org.svfc57.entities.UserImpl;
+import org.svfc57.entities.User;
 
 public class UserServiceImpl implements UserService, UserDetailsService {
 
-	private UserImpl admin;
-	private UserImpl mona;
+	private User admin;
+	private User mona;
 
     public UserServiceImpl( PasswordEncoder encoder, SaltSource salt ) {
 
     	
     	GrantedAuthority user = new GrantedAuthorityImpl( "ROLE_DEFAULT" );
         
-        admin = new UserImpl( "admin" );
+        admin = new User( "admin" );
         admin.addAuthority( user );
         admin.addAuthority( new GrantedAuthorityImpl( "ROLE_ADMIN" ) );
         admin.setPassword( encoder.encodePassword( "admin", salt.getSalt( admin ) ) );
 
-        mona = new UserImpl( "mona");
+        mona = new User( "mona");
         mona.addAuthority( user );
         mona.addAuthority( new GrantedAuthorityImpl( "ROLE_TELLER" ) );
         mona.setPassword( encoder.encodePassword( "mona", salt.getSalt( mona ) ) );

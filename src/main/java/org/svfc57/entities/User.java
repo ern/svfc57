@@ -6,9 +6,8 @@ import java.util.List;
 import org.apache.tapestry5.ioc.internal.util.CollectionFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.svfc57.api.User;
 
-public class UserImpl implements User, UserDetails {
+public class User implements UserDetails {
 
 	private static final long serialVersionUID = 5905943605972246434L;
 
@@ -20,7 +19,7 @@ public class UserImpl implements User, UserDetails {
 	public boolean enabled;
 	private List<GrantedAuthority> authorities = CollectionFactory.newList();
 	
-	public UserImpl(String username) {
+	public User(String username) {
 		this.username = username;
 	}
 
