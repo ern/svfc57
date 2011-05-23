@@ -132,7 +132,8 @@ a:hover {
 
 #colOne {
 	float: left;
-	width: 650px;
+	/* width: 650px; */
+	width: 100%;
 }
 
 #colOne h2 {
@@ -215,6 +216,10 @@ a:hover {
 	border-right-color: #1B0F0F;
 	border-bottom-color: #1B0F0F;
 	color: #CCCCCC;
+}
+
+.announcements {
+	width: 100%;
 }
 
 /* Footer */

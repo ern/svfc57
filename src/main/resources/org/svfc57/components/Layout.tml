@@ -57,9 +57,10 @@
                         <t:body/>
                     </div>
    			    </div>
+               	<!-- need to adjust width in css 
                	<div id="colTwo">
 			      	<h2>Events</h2>
-                </div>
+                </div> -->
             </div>
             <!-- end content -->
             <br style="clear: both;"/>
