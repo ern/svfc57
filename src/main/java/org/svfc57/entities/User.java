@@ -2,40 +2,56 @@ package org.svfc57.entities;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import org.apache.tapestry5.ioc.internal.util.CollectionFactory;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.userdetails.UserDetails;
 
+@Entity(name="User")
 public class User implements UserDetails {
 
+	@Transient
 	private static final long serialVersionUID = 5905943605972246434L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long id;
+	
 	public String username;
 	public String password;
-	public boolean expired;
-	public boolean locked;
+	public boolean accountNonExpired;
+	public boolean accountNonLocked;
+	public boolean credentialsNonExpired;
 	public boolean enabled;
-	private List<GrantedAuthority> authorities = CollectionFactory.newList();
-	
-	public User(String username) {
-		this.username = username;
-	}
-
-	public void addAuthority( GrantedAuthority authority ) {
-		
-		authorities.add( authority );
-	}
-	
+	public String authority;
+	//@OneToMany
+	//public Set<Authority> roles;
+/*	
 	public Collection<GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
+		List<GrantedAuthority> authorities = CollectionFactory.newList();
+		for (Authority role : roles) {
+			authorities.add(new GrantedAuthorityImpl(role.getAuthority()));
+		}
 		return authorities;
 	}
-
+*/
+	public Collection<GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> authorities = CollectionFactory.newList();
+		authorities.add(new GrantedAuthorityImpl(authority));
+		return authorities;
+	}
+	
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
 		return password;
 	}
 
@@ -45,7 +61,6 @@ public class User implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
 		return username;
 	}
 
@@ -55,27 +70,21 @@ public class User implements UserDetails {
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
+		return accountNonExpired;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
+		return accountNonLocked;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
+		return credentialsNonExpired;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
+		return enabled;
 	}
-
-
 }
