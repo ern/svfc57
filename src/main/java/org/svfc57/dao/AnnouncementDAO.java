@@ -10,4 +10,6 @@ public interface AnnouncementDAO {
 	
 	public Announcement getById(long announcementId);
 	
+	public List<Announcement> getCurrentActiveAnnouncements();
+	
 }

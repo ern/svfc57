@@ -30,10 +30,6 @@ public class Layout
     @Parameter(defaultPrefix = BindingConstants.LITERAL)
     private String rightColTitle;
 
-    @Property
-    @Parameter(defaultPrefix = BindingConstants.LITERAL)
-    private Block rightCol;
-
     @Inject
     private ComponentResources resources;
 	

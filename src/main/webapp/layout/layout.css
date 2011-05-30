@@ -142,8 +142,14 @@ a:hover {
 	color: #CCCCCC;
 }
 
+#colOne h3 {
+	margin-top: 0;
+	font-size: 1.1em;
+	color: #CCCCCC;
+}
+
 #colOne p, #colOne ul, #colOne ol {
-	line-height: 160%;
+	line-height: 120%;
 }
 
 #colOne .credits {

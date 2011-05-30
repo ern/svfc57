@@ -19,5 +19,10 @@ public class AnnouncementDAOImpl implements AnnouncementDAO {
 	public Announcement getById(long announcementId) {
 		return (Announcement) session.get(Announcement.class, announcementId);
 	}
+	
+	public List<Announcement> getCurrentActiveAnnouncements() {
+		// TODO restrict to only active announcements
+		return (List<Announcement>) session.createCriteria(Announcement.class).list();
+	}
 
 }
