@@ -2,14 +2,14 @@ package org.svfc57.dao;
 
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 
-public interface GenericDAO {
+public interface GenericDAO<T> {
 
 	@CommitAfter
-	public void add(Object object);
+	public void add(T object);
 	
 	@CommitAfter
-	public void update(Object object);
+	public void update(T object);
 
 	@CommitAfter
-	public void delete(Object object);
+	public void delete(T object);
 }
