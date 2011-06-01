@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.svfc57.entities.Announcement;
 
-public interface AnnouncementDAO {
+public interface AnnouncementDAO<T> extends GenericDAO<T> {
 	
 	public List<Announcement> getAnnouncements();
 	

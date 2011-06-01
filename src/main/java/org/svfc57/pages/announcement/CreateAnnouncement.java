@@ -7,8 +7,8 @@ import org.apache.tapestry5.annotations.Log;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.hibernate.Session;
 import org.springframework.security.access.annotation.Secured;
+import org.svfc57.dao.AnnouncementDAO;
 import org.svfc57.entities.Announcement;
 
 @Secured("ROLE_ADMIN")
@@ -17,7 +17,7 @@ public class CreateAnnouncement {
 	private Announcement announcement;
 	
 	@Inject
-	private Session session;
+	private AnnouncementDAO<Announcement> dao;
 	
 	@InjectPage
 	private Index index;
@@ -31,7 +31,7 @@ public class CreateAnnouncement {
 	@Log
 	@CommitAfter
 	Object onSuccess() {
-		session.persist(announcement);
+		dao.add(announcement);
 		
 		return index;
 	}
