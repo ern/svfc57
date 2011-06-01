@@ -16,7 +16,7 @@ import org.apache.tapestry5.beaneditor.Validate;
 public class Announcement {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@NonVisual
 	public long id;
 	

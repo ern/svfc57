@@ -23,7 +23,7 @@ public class User implements UserDetails {
 	private static final long serialVersionUID = 5905943605972246434L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public long id;
 	
 	public String username;
