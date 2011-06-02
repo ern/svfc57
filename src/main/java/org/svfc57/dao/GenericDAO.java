@@ -12,4 +12,5 @@ public interface GenericDAO<T> {
 
 	@CommitAfter
 	public void delete(T object);
+	
 }

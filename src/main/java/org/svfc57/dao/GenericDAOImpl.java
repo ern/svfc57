@@ -2,6 +2,7 @@ package org.svfc57.dao;
 
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.hibernate.Session;
+import org.svfc57.entities.Announcement;
 
 public class GenericDAOImpl<T> implements GenericDAO<T> {
 
@@ -25,6 +26,5 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
 		// TODO Auto-generated method stub
 		
 	}
-	
 
 }
