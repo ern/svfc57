@@ -12,4 +12,6 @@ public interface PersonDAO<T> extends GenericDAO<T> {
 	public List<Person> getPersonsByZip(String zip);
 	public List<Person> getPersonsByEmail(String email);
 	public List<Person> getPersonsByCity(String city);
+	public List<Person> getPersons();
+	public Person getById(long personId);
 }
