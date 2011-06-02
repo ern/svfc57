@@ -24,6 +24,8 @@ import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.svfc57.dao.AnnouncementDAO;
 import org.svfc57.dao.AnnouncementDAOImpl;
+import org.svfc57.dao.PersonDAO;
+import org.svfc57.dao.PersonDAOImpl;
 import org.svfc57.dao.UserDAO;
 import org.svfc57.dao.UserDAOImpl;
 
@@ -44,6 +46,7 @@ public class AppModule
     	
     	binder.bind(UserDetailsService.class, UserServiceImpl.class);
     	binder.bind(AnnouncementDAO.class, AnnouncementDAOImpl.class);
+    	binder.bind(PersonDAO.class, PersonDAOImpl.class);
     	binder.bind(UserDAO.class, UserDAOImpl.class);
     }
     

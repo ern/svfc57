@@ -3,26 +3,30 @@ package org.svfc57.pages.person;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Log;
 import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.hibernate.Session;
+import org.springframework.security.access.annotation.Secured;
+import org.svfc57.dao.PersonDAO;
 import org.svfc57.entities.Person;
 
+@Secured("ROLE_ADMIN")
 public class CreatePerson {
 
 	@Property
 	private Person person;
 	
 	@Inject
-	private Session session;
+	private PersonDAO<Person> dao;
 	
 	@InjectPage
 	private Index index;
 	
+	public CreatePerson() {
+		person = new Person();
+	}
+	
 	@Log
-	@CommitAfter
 	Object onSuccess() {
-		session.persist(person);
+		dao.add(person);
 		
 		return index;
 	}
