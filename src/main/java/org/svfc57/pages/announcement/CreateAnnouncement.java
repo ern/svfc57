@@ -29,7 +29,6 @@ public class CreateAnnouncement {
 	}
 	
 	@Log
-	@CommitAfter
 	Object onSuccess() {
 		dao.add(announcement);
 		
