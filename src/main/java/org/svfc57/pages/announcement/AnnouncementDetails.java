@@ -1,5 +1,6 @@
 package org.svfc57.pages.announcement;
 
+import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.svfc57.dao.AnnouncementDAO;
@@ -13,7 +14,10 @@ public class AnnouncementDetails {
 	private long announcementId;
 
 	@Inject
-	private AnnouncementDAO dao;
+	private AnnouncementDAO<Announcement> dao;
+	
+	@InjectPage
+	private Index index;
 
 	public void setAnnouncementId(long announcementId) {
 		this.announcementId = announcementId;
@@ -26,5 +30,11 @@ public class AnnouncementDetails {
 	
 	public long onPassivate() {
 		return announcementId;
+	}
+	
+	public Object onSuccess() {
+		dao.update(announcement);
+		
+		return index;
 	}
 }

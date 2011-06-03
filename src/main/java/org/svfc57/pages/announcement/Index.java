@@ -14,7 +14,7 @@ import org.svfc57.pages.announcement.AnnouncementDetails;
 public class Index {
 
 	@Inject
-	private AnnouncementDAO dao;
+	private AnnouncementDAO<Announcement> dao;
 	
 	@InjectPage
 	private AnnouncementDetails details;
