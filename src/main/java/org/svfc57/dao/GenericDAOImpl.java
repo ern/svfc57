@@ -18,7 +18,7 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
 	@Override
 	public void update(T object) {
 		// TODO Auto-generated method stub
-		
+		session.update(object);
 	}
 
 	@Override
