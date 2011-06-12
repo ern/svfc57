@@ -117,7 +117,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         </repository>
 		<repository>
 			<id>localhost.nu</id>
-			<url>http://www.localhost.nu/java/mvn</url>
+			<url>http://www.localhost.nu/java/mvn-snapshot</url>
 		</repository>
     </repositories>
 
