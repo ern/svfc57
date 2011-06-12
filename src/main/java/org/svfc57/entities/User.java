@@ -2,15 +2,13 @@ package org.svfc57.entities;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 
+import org.apache.tapestry5.beaneditor.NonVisual;
 import org.apache.tapestry5.ioc.internal.util.CollectionFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
@@ -19,19 +17,23 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity(name="User")
 public class User implements UserDetails {
 
-	@Transient
-	private static final long serialVersionUID = 5905943605972246434L;
-
+	@NonVisual
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public long id;
 	
 	public String username;
 	public String password;
-	public boolean accountNonExpired;
-	public boolean accountNonLocked;
-	public boolean credentialsNonExpired;
 	public boolean enabled;
+	public boolean accountNonLocked;
+	
+	@NonVisual
+	public boolean accountNonExpired;
+	
+	@NonVisual
+	public boolean credentialsNonExpired;
+		
+	@NonVisual
 	public String authority;
 	//@OneToMany
 	//public Set<Authority> roles;
@@ -86,5 +88,21 @@ public class User implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public void setAccountNonLocked(boolean accountNonLocked) {
+		this.accountNonLocked = accountNonLocked;
+	}
+
+	public void setAccountNonExpired(boolean accountNonExpired) {
+		this.accountNonExpired = accountNonExpired;
+	}
+
+	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+		this.credentialsNonExpired = credentialsNonExpired;
 	}
 }

@@ -1,12 +1,14 @@
 package org.svfc57.dao;
 
-import org.apache.tapestry5.annotations.Log;
+import java.util.List;
+
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import org.svfc57.entities.Person;
 import org.svfc57.entities.User;
 
-public class UserDAOImpl implements UserDAO {
+public class UserDAOImpl<T> extends GenericDAOImpl<T> implements UserDAO<T> {
 
 	@Inject
 	private Session session;
@@ -25,6 +27,12 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public User getUserByName(String name) {
 		return (User) session.createCriteria(User.class).add(Restrictions.eq("username", name)).uniqueResult();
+	}
+	
+	@Override
+	public List<User> getUsers() {
+		// TODO Auto-generated method stub
+		return session.createCriteria(User.class).list();
 	}
 
 }

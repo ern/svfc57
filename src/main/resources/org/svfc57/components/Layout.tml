@@ -14,6 +14,7 @@
             	<t:security.ifloggedin>
 					<!-- this area is only visible to logged in users -->
 					<t:pagelink page="person/index">People</t:pagelink>
+					<t:pagelink page="user/index">Users</t:pagelink>
 					<t:pagelink page="announcement/index">Announcements</t:pagelink>
 				</t:security.ifloggedin>
         	</div>
