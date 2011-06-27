@@ -4,6 +4,7 @@ import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.springframework.security.access.annotation.Secured;
+import org.svfc57.api.UserService;
 import org.svfc57.dao.UserDAO;
 import org.svfc57.entities.User;
 
@@ -15,11 +16,11 @@ public class UserDetails {
 
 	private long userId;
 
-	@Inject
-	private UserDAO<User> dao;
-	
 	@InjectPage
 	private Index index;
+	
+	@Inject 
+	private UserService uds;
 
 	public void setUserId(long userId) {
 		this.userId = userId;
@@ -27,7 +28,8 @@ public class UserDetails {
 
 	public void onActivate(long userId) {
 		this.userId = userId;
-		user = dao.getUserById(userId);
+		user = uds.getUser(userId);
+		user.setPassword("");
 	}
 	
 	public long onPassivate() {
@@ -35,7 +37,7 @@ public class UserDetails {
 	}
 	
 	public Object onSuccess() {
-		dao.update(user);
+		uds.updateUser(user);
 		
 		return index;
 	}

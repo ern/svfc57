@@ -21,7 +21,7 @@ import org.slf4j.Logger;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.svfc57.api.UserService;
 import org.svfc57.dao.AnnouncementDAO;
 import org.svfc57.dao.AnnouncementDAOImpl;
 import org.svfc57.dao.PersonDAO;
@@ -44,7 +44,7 @@ public class AppModule
         // is provided inline, or requires more initialization than simply
         // invoking the constructor.
     	
-    	binder.bind(UserDetailsService.class, UserServiceImpl.class);
+    	binder.bind(UserService.class, UserServiceImpl.class);
     	binder.bind(AnnouncementDAO.class, AnnouncementDAOImpl.class);
     	binder.bind(PersonDAO.class, PersonDAOImpl.class);
     	binder.bind(UserDAO.class, UserDAOImpl.class);

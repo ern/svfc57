@@ -31,7 +31,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         //admin.setPassword( encoder.encodePassword( "admin", salt.getSalt( admin ) ) );
     }
 
-    public UserDetails loadUserByUsername( String name )
+    /* (non-Javadoc)
+	 * @see org.svfc57.services.UserService#loadUserByUsername(java.lang.String)
+	 */
+    @Override
+	public UserDetails loadUserByUsername( String name )
         throws UsernameNotFoundException, DataAccessException {
     	
     	User user = dao.getUserByName(name);
@@ -45,4 +49,41 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         
         return null;
     }
+    
+	@Override
+	public boolean addUser(User user) {
+
+		User newUser = dao.getUserByName(user.username);
+		if(newUser == null) {
+			// user does not exist so its ok to add
+			user.password = encoder.encodePassword(user.password, salt.getSalt(user));
+			dao.add(user);
+			return true;
+		} 
+		
+		return false;
+	}
+
+	@Override
+	public boolean updateUser(User user) {
+		
+		User currentUser = dao.getUserById(user.id);
+		
+		if(!(user.getPassword().isEmpty())) {
+			// User has set password so we need to encrypt it
+			user.setPassword(encoder.encodePassword(user.password, salt.getSalt(user)));
+		} else {
+			// use old password
+			user.setPassword(currentUser.password);
+		}
+			
+		dao.update(user);
+		
+		return false;
+	}
+
+	@Override
+	public User getUser(long id) {
+		return dao.getUserById(id);
+	}
 }
