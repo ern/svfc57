@@ -10,9 +10,9 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
 	private Session session;
 
 	@Override
-	public void add(T object) {
+	public void create(T object) {
 		// TODO Auto-generated method stub
-		session.persist(object);
+		session.save(object);
 	}
 
 	@Override

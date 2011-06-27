@@ -4,12 +4,9 @@ import java.util.List;
 
 import org.svfc57.entities.Announcement;
 
-public interface AnnouncementDAO<T> extends GenericDAO<T> {
+public interface AnnouncementDAO extends GenericDAO<Announcement> {
 	
-	public List<Announcement> getAnnouncements();
-	
-	public Announcement getById(long announcementId);
-	
-	public List<Announcement> getCurrentActiveAnnouncements();
-	
+	public List<Announcement> findAllAnnouncements();
+	public Announcement findAnnouncement(long announcementId);
+	public List<Announcement> findCurrentActiveAnnouncements();
 }

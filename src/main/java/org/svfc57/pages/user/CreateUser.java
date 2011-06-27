@@ -23,13 +23,8 @@ public class CreateUser {
 	@Log
 	Object onSuccess() {
 		
-		if(uds.addUser(user)) {
-			// success
-			return index;
-		} else {
-			// problem 
-			return null;
-		}
+		uds.addUser(user);
+		return index;
 		
 	}
 	

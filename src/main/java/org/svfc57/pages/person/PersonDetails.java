@@ -16,7 +16,7 @@ public class PersonDetails {
 	private long personId;
 
 	@Inject
-	private PersonDAO<Person> dao;
+	private PersonDAO dao;
 	
 	@InjectPage
 	private Index index;
@@ -27,7 +27,7 @@ public class PersonDetails {
 
 	public void onActivate(long personId) {
 		this.personId = personId;
-		person = dao.getById(personId);
+		person = dao.findPerson(personId);
 	}
 	
 	public long onPassivate() {

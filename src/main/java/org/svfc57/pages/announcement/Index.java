@@ -14,7 +14,7 @@ import org.svfc57.pages.announcement.AnnouncementDetails;
 public class Index {
 
 	@Inject
-	private AnnouncementDAO<Announcement> dao;
+	private AnnouncementDAO dao;
 	
 	@InjectPage
 	private AnnouncementDetails details;
@@ -23,7 +23,7 @@ public class Index {
 	private Announcement announcement;
 
 	public List<Announcement> getAnnouncements() {
-		return dao.getAnnouncements();
+		return dao.findAllAnnouncements();
 	}
 	
 	public Object onActionFromSelect(long announcementId) {

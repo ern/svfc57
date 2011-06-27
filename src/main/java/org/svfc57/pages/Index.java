@@ -20,7 +20,7 @@ public class Index {
 	private Announcement announcement;
 
 	public List<Announcement> getCurrentActiveAnnouncements() {
-		return dao.getCurrentActiveAnnouncements();
+		return dao.findCurrentActiveAnnouncements();
 	}
 
 	public Date getCurrentTime() {

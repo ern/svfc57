@@ -28,7 +28,7 @@ public class UserDetails {
 
 	public void onActivate(long userId) {
 		this.userId = userId;
-		user = uds.getUser(userId);
+		user = uds.findUser(userId);
 		user.setPassword("");
 	}
 	

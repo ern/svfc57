@@ -15,18 +15,14 @@ public class CreatePerson {
 	private Person person;
 	
 	@Inject
-	private PersonDAO<Person> dao;
+	private PersonDAO dao;
 	
 	@InjectPage
 	private Index index;
 	
-	public CreatePerson() {
-		person = new Person();
-	}
-	
 	@Log
 	Object onSuccess() {
-		dao.add(person);
+		dao.create(person);
 		
 		return index;
 	}

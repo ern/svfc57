@@ -16,7 +16,7 @@ public class AnnouncementDetails {
 	private long announcementId;
 
 	@Inject
-	private AnnouncementDAO<Announcement> dao;
+	private AnnouncementDAO dao;
 	
 	@InjectPage
 	private Index index;
@@ -27,7 +27,7 @@ public class AnnouncementDetails {
 
 	public void onActivate(long announcementId) {
 		this.announcementId = announcementId;
-		announcement = dao.getById(announcementId);
+		announcement = dao.findAnnouncement(announcementId);
 	}
 	
 	public long onPassivate() {

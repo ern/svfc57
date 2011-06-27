@@ -1,5 +1,7 @@
 package org.svfc57.api;
 
+import java.util.List;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -22,17 +24,22 @@ public interface UserService extends UserDetailsService {
 	 * @param user
 	 * @return true if user was added otherwise false
 	 */
-	public boolean addUser(User user);
+	public void addUser(User user);
 
 	/**
 	 * @param user
 	 * @return true if user was updated otherwise false
 	 */
-	public boolean updateUser(User user); 
+	public void updateUser(User user); 
 	
 	/**
 	 * @param id
 	 * @return User object with the requested id
 	 */
-	public User getUser(long id);
+	public User findUser(long id);
+	
+	/**
+	 * @return a List of all Users
+	 */
+	public List<User> findAllUsers();
 }

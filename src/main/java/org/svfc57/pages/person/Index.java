@@ -23,7 +23,7 @@ public class Index {
 	private PersonDetails details;
 
 	public List<Person> getPersons() {
-        return dao.getPersons();
+        return dao.findPersons();
     }
 
 	public Object onActionFromSelect(long personId) {

@@ -1,5 +1,7 @@
 package org.svfc57.services;
 
+import java.util.List;
+
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.ioc.annotations.InjectResource;
 import org.slf4j.Logger;
@@ -38,7 +40,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	public UserDetails loadUserByUsername( String name )
         throws UsernameNotFoundException, DataAccessException {
     	
-    	User user = dao.getUserByName(name);
+    	User user = dao.findUserByName(name);
     	if (user != null) {
     		
     		// TODO must delete this after creating the User Forms
@@ -51,23 +53,20 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
     
 	@Override
-	public boolean addUser(User user) {
+	public void addUser(User user) {
 
-		User newUser = dao.getUserByName(user.username);
+		User newUser = dao.findUserByName(user.username);
 		if(newUser == null) {
 			// user does not exist so its ok to add
 			user.password = encoder.encodePassword(user.password, salt.getSalt(user));
-			dao.add(user);
-			return true;
+			dao.create(user);
 		} 
-		
-		return false;
 	}
 
 	@Override
-	public boolean updateUser(User user) {
+	public void updateUser(User user) {
 		
-		User currentUser = dao.getUserById(user.id);
+		User currentUser = dao.findUser(user.id);
 		
 		if(!(user.getPassword().isEmpty())) {
 			// User has set password so we need to encrypt it
@@ -78,12 +77,15 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		}
 			
 		dao.update(user);
-		
-		return false;
 	}
 
 	@Override
-	public User getUser(long id) {
-		return dao.getUserById(id);
+	public User findUser(long id) {
+		return dao.findUser(id);
+	}
+
+	@Override
+	public List<User> findAllUsers() {
+		return dao.findAllUsers();
 	}
 }

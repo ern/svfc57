@@ -4,12 +4,10 @@ import java.util.List;
 
 import org.svfc57.entities.User;
 
-public interface UserDAO<T> extends GenericDAO<T> {
+public interface UserDAO extends GenericDAO<User> {
 
-	public abstract User getUserById(long id);
-
-	public abstract User getUserByName(String name);
-
-	List<User> getUsers();
+	public User findUser(long id);
+	public User findUserByName(String name);
+	List<User> findAllUsers();
 
 }

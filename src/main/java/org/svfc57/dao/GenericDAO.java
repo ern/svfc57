@@ -5,7 +5,7 @@ import org.apache.tapestry5.hibernate.annotations.CommitAfter;
 public interface GenericDAO<T> {
 
 	@CommitAfter
-	public void add(T object);
+	public void create(T object);
 	
 	@CommitAfter
 	public void update(T object);

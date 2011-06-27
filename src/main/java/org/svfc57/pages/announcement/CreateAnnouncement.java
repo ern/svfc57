@@ -16,12 +16,12 @@ public class CreateAnnouncement {
 	private Announcement announcement;
 	
 	@Inject
-	private AnnouncementDAO<Announcement> dao;
+	private AnnouncementDAO dao;
 	
 	@InjectPage
 	private Index index;
 
-	public CreateAnnouncement() {
+	public void onActivate() {
 		announcement = new Announcement();
 		announcement.active = true;
 		announcement.showAfterDate = new Date();
@@ -29,7 +29,7 @@ public class CreateAnnouncement {
 	
 	@Log
 	Object onSuccess() {
-		dao.add(announcement);
+		dao.create(announcement);
 		
 		return index;
 	}

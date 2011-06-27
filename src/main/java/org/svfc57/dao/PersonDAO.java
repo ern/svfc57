@@ -4,14 +4,14 @@ import java.util.List;
 
 import org.svfc57.entities.Person;
 
-public interface PersonDAO<T> extends GenericDAO<T> {
+public interface PersonDAO extends GenericDAO<Person> {
 	
-	public List<Person> getPersonsByLastName(String lastName);
-	public List<Person> getPersonsByFirstName(String firstName);
-	public List<Person> getPersonsByStreet(String street);
-	public List<Person> getPersonsByZip(String zip);
-	public List<Person> getPersonsByEmail(String email);
-	public List<Person> getPersonsByCity(String city);
-	public List<Person> getPersons();
-	public Person getById(long personId);
+	public List<Person> findPersonsByLastName(String lastName);
+	public List<Person> findPersonsByFirstName(String firstName);
+	public List<Person> findPersonsByStreet(String street);
+	public List<Person> findPersonsByZip(String zip);
+	public List<Person> findPersonsByEmail(String email);
+	public List<Person> findPersonsByCity(String city);
+	public List<Person> findPersons();
+	public Person findPerson(long personId);
 }

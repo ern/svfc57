@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import org.apache.tapestry5.beaneditor.NonVisual;
 import org.apache.tapestry5.ioc.internal.util.CollectionFactory;
 import org.springframework.security.core.GrantedAuthority;
