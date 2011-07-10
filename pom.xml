@@ -63,7 +63,20 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
 			<version>3.0.0-SNAPSHOT</version>
 		</dependency>
     </dependencies>
-    <build>
+        <developers>
+        	<developer>
+        		<id>ern</id>
+        		<name>Earle Nietzel</name>
+        		<email>earle.nietzel@gmail.com</email>
+        		<timezone>GMT-5</timezone>
+        	</developer>
+        </developers>
+        <scm>
+        	<connection>git://github.com/ern/svfc57.git</connection>
+        	<developerConnection>ern</developerConnection>
+        	<url>https://github.com/ern/svfc57</url>
+        </scm>
+        <build>
         <finalName>svfc57</finalName>
         <plugins>
             <plugin>
