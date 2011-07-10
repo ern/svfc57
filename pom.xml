@@ -63,6 +63,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
 			<version>3.0.0-SNAPSHOT</version>
 		</dependency>
     </dependencies>
+        <inceptionYear>2011</inceptionYear>
         <developers>
         	<developer>
         		<id>ern</id>
@@ -102,7 +103,46 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
                         <append>true</append>
                     </requestLog>
                 </configuration>
-            </plugin>
+		    </plugin>
+			<plugin>
+				<groupId>com.mycila.maven-license-plugin</groupId>
+				<artifactId>maven-license-plugin</artifactId>
+				<configuration>
+					<basedir>${basedir}</basedir>
+					<header>${basedir}/src/main/webapp/layout/header.txt</header>
+					<strictCheck>true</strictCheck>
+					<includes>
+						<include>src/main/**</include>
+						<include>src/test/**</include>
+					</includes>
+					<excludes>
+						<exclude>target/**</exclude>
+						<exclude>.clover/**</exclude>
+						<exclude>**/PLACEHOLDER</exclude>
+						<exclude>src/main/webapp/layout/gpl-3.0.txt</exclude>
+					</excludes>
+					<useDefaultExcludes>true</useDefaultExcludes>
+					<mapping>
+						<tml>XML_STYLE</tml>
+						<jwc>XML_STYLE</jwc>
+						<application>XML_STYLE</application>
+						<myFileExtension>JAVADOC_STYLE</myFileExtension>
+					</mapping>
+					<useDefaultMapping>true</useDefaultMapping>
+					<properties>
+						<year>${project.inceptionYear}</year>
+						<email>earle.nietzel@gmail.com</email>
+					</properties>
+					<encoding>UTF-8</encoding>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
         </plugins>
     </build>
 
