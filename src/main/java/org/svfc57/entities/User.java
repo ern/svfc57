@@ -26,10 +26,8 @@ public class User implements UserDetails {
 	public boolean enabled;
 	public boolean accountNonLocked;
 	
-	@NonVisual
 	public boolean accountNonExpired;
 	
-	@NonVisual
 	public boolean credentialsNonExpired;
 		
 	@NonVisual

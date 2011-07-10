@@ -1,28 +1,14 @@
-<html t:type="layout" title="List Users"
+<html t:type="layout" title="Users"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
       xmlns:p="tapestry:parameter">
 
 	<t:pagelink page="user/create" style="padding-right: 10px;">Create User</t:pagelink>
+	<br/><br/>
 
-	<table class="announcements">
-		<thead><tr>
-			<th>User Name</th>
-			<th>Enabled</th>
-			<th>Account Non-Locked</th>
-			<th>Account Non-Expired</th>
-			<th>Credentials Non-Expired</th>
-		</tr></thead>
-		<tbody>
-			<t:loop source="users" value="user">
-				<tr><td>
-					<a t:type="actionlink" t:id="select" context="user.id">${user.userName}</a>
-    			</td>
-    			<td>${user.userName}</td>
-    			<td>${user.enabled}</td>
-    			<td>${user.accountNonLocked}</td>
-    			<td>${user.accountNonExpired}</td>
-    			<td>${user.credentialsNonExpired}</td></tr>
-    		</t:loop>
-    	</tbody>
-    </table>
+	<t:grid source="users" rowsPerPage="20" row="user" 
+		include="username,enabled,accountNonLocked,accountNonExpired,credentialsNonExpired">
+		<p:usernameCell>
+			<t:pageLink t:page="user/Details" t:context="user.id">${user.username}</t:pageLink>
+		</p:usernameCell>
+	</t:grid>
 </html>

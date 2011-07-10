@@ -257,3 +257,52 @@ DIV.t-beaneditor {
 	background: none;
 	border: none;
 }
+
+TABLE.t-data-grid {
+	background-color: black;
+	background: none;
+	border: none;
+	border-top: none;
+	border-bottom: none;
+	border-left: none;
+	border-right:none;
+}
+
+TABLE.t-data-grid thead tr {
+	background-color: black;
+	color: red;
+	background: none;
+	border: none;
+	border-top: none;
+	border-bottom: none;
+	border-left: none;
+	border-right:none;
+}
+
+TABLE.t-data-grid tbody tr td {
+	background-color: black;
+	color: white;
+	background: none;
+	border: none;
+	border-top: none;
+	border-bottom: none;
+	border-left: none;
+	border-right:none;
+}
+
+TABLE.t-data-grid thead tr th {
+	background-color: black;
+	color: white;
+	background: none;
+	border: none;
+	border-top: none;
+	border-bottom: none;
+	border-left: none;
+	border-right:none;
+}
+
+TABLE.t-data-grid TR TH A {
+    color: red;
+    text-decoration: none;
+    width: 100%;
+}
