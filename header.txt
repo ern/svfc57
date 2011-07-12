@@ -1,4 +1,4 @@
-Copyright (C) ${year} ${user.name} <${email}>
+Copyright (C) ${year} ${owner} <${email}>
 
 This file is part of SVFC57.
 

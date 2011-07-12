@@ -109,7 +109,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
 				<artifactId>maven-license-plugin</artifactId>
 				<configuration>
 					<basedir>${basedir}</basedir>
-					<header>${basedir}/src/main/webapp/layout/header.txt</header>
+					<header>${basedir}/header.txt</header>
 					<strictCheck>true</strictCheck>
 					<includes>
 						<include>src/main/**</include>
@@ -131,6 +131,7 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
 					<useDefaultMapping>true</useDefaultMapping>
 					<properties>
 						<year>${project.inceptionYear}</year>
+						<owner>Earle Nietzel</owner>
 						<email>earle.nietzel@gmail.com</email>
 					</properties>
 					<encoding>UTF-8</encoding>
