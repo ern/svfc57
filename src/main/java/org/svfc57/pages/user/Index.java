@@ -26,6 +26,8 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.springframework.security.access.annotation.Secured;
 import org.svfc57.api.UserService;
+import org.svfc57.dao.PersonDAO;
+import org.svfc57.entities.Person;
 import org.svfc57.entities.User;
 
 @Secured("ROLE_ADMIN")
@@ -34,12 +36,19 @@ public class Index {
 	@Inject
 	private UserService us;
 	
+	@Inject
+	private PersonDAO personDao;
+	
 	@Property
 	private User user;
 	
 	@InjectPage
 	private UserDetails details;
 
+	public List<Person> getPersonsWithNoUserAccount() {
+		return personDao.findPersonsWithNoUserAccount();
+	}
+	
 	public List<User> getUsers() {
         return us.findAllUsers();
     }
@@ -49,4 +58,5 @@ public class Index {
 
 		return details;
 	}
+	
 }

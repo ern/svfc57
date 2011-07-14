@@ -19,12 +19,16 @@
 
 package org.svfc57.pages.user;
 
+import java.util.List;
+
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Log;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.springframework.security.access.annotation.Secured;
 import org.svfc57.api.UserService;
+import org.svfc57.dao.PersonDAO;
+import org.svfc57.entities.Person;
 import org.svfc57.entities.User;
 
 @Secured("ROLE_ADMIN")
@@ -32,12 +36,19 @@ public class CreateUser {
 
 	@Property
 	private User user;
+
+	private List<Person> getPersonsWithNoUserAccount() {
+		return personDao.findPersonsWithNoUserAccount();
+	}
 	
 	@InjectPage
 	private Index index;
 	
 	@Inject
 	private UserService uds;
+	
+	@Inject
+	private PersonDAO personDao;
 	
 	@Log
 	Object onSuccess() {
@@ -46,5 +57,4 @@ public class CreateUser {
 		return index;
 		
 	}
-	
 }

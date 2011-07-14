@@ -23,9 +23,14 @@
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
       xmlns:p="tapestry:parameter">
 
-	<t:pagelink page="user/create" style="padding-right: 10px;">Create User</t:pagelink>
+	<t:if test="personsWithNoUserAccount">
+		<t:pagelink page="user/create" style="padding-right: 10px;">Create User</t:pagelink>
+		<p:else>
+			There are no available people without a User Account, please add another person first.
+		</p:else>
+	</t:if>
 	<br/><br/>
-
+	
 	<t:grid source="users" rowsPerPage="20" row="user" 
 		include="username,enabled,accountNonLocked,accountNonExpired,credentialsNonExpired">
 		<p:usernameCell>
