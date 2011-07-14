@@ -22,22 +22,28 @@ package org.svfc57.entities;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import org.apache.tapestry5.beaneditor.NonVisual;
 import org.apache.tapestry5.ioc.internal.util.CollectionFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.userdetails.UserDetails;
 
-@Entity(name="User")
+@Entity
 public class User implements UserDetails {
 
 	@NonVisual
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="USER_ID")
 	public long id;
 	
 	public String username;
@@ -48,6 +54,9 @@ public class User implements UserDetails {
 	public boolean accountNonExpired;
 	
 	public boolean credentialsNonExpired;
+	
+	@OneToOne(mappedBy="user")
+	public Person person;
 		
 	@NonVisual
 	public String authority;

@@ -19,20 +19,25 @@
 
 package org.svfc57.entities;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
 import org.apache.tapestry5.beaneditor.Validate;
 
-@Entity(name="Person")
+@Entity
 public class Person {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@NonVisual
+	@Column(name="PERSON_ID")
 	public long id;
 	
 	@Validate("required")
@@ -61,4 +66,8 @@ public class Person {
 	@Validate("required")
 	public String phone;
 	
+	@NonVisual
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="USER_ID")
+	public User user;
 }
