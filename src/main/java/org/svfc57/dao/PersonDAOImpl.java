@@ -23,6 +23,7 @@ import java.util.List;
 
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.svfc57.entities.Person;
 
 public class PersonDAOImpl extends GenericDAOImpl<Person> implements PersonDAO {
@@ -72,8 +73,14 @@ public class PersonDAOImpl extends GenericDAOImpl<Person> implements PersonDAO {
 		return session.createCriteria(Person.class).list();
 	}
 
+	@Override
 	public Person findPerson(long personId) {
 		return (Person) session.get(Person.class, personId);
+	}
+	
+	@Override
+	public List<Person> findPersonsWithNoUserAccount() {
+		return session.createCriteria(Person.class).add(Restrictions.isNull("user")).list();
 	}
 	
 }

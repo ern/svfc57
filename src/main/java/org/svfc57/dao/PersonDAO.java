@@ -25,12 +25,13 @@ import org.svfc57.entities.Person;
 
 public interface PersonDAO extends GenericDAO<Person> {
 	
-	public List<Person> findPersonsByLastName(String lastName);
-	public List<Person> findPersonsByFirstName(String firstName);
-	public List<Person> findPersonsByStreet(String street);
-	public List<Person> findPersonsByZip(String zip);
-	public List<Person> findPersonsByEmail(String email);
-	public List<Person> findPersonsByCity(String city);
-	public List<Person> findPersons();
-	public Person findPerson(long personId);
+	public abstract List<Person> findPersonsByLastName(String lastName);
+	public abstract List<Person> findPersonsByFirstName(String firstName);
+	public abstract List<Person> findPersonsByStreet(String street);
+	public abstract List<Person> findPersonsByZip(String zip);
+	public abstract List<Person> findPersonsByEmail(String email);
+	public abstract List<Person> findPersonsByCity(String city);
+	public abstract List<Person> findPersons();
+	public abstract List<Person> findPersonsWithNoUserAccount();
+	public abstract Person findPerson(long personId);
 }
