@@ -285,6 +285,7 @@ TABLE.t-data-grid {
 	border-bottom: none;
 	border-left: none;
 	border-right:none;
+	width: 100%;
 }
 
 TABLE.t-data-grid thead tr {

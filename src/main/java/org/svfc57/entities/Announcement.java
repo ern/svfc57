@@ -39,18 +39,14 @@ public class Announcement {
 	@NonVisual
 	public long id;
 	
-	@NonVisual
 	@Temporal(TemporalType.DATE)
 	public Date createDate;
 	
-	@NonVisual
 	@Temporal(TemporalType.DATE)
 	public Date modifiedDate;
 
-	@NonVisual
 	public long createdBy;
 	
-	@NonVisual
 	public long modifiedBy;
 
 	@Validate("required")

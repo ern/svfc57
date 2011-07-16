@@ -27,28 +27,13 @@
         <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
 	<t:pagelink page="announcement/create" style="padding-right: 10px;">Create Announcement</t:pagelink>
+	<br/><br/>
 
-	<table class="announcements">
-		<thead><tr>
-			<th>Title</th>
-			<th>Active</th>
-			<th>Show After</th>
-			<th>Show Before</th>
-			<th>Last Modified By</th>
-			<th>Last Modified Date</th>
-		</tr></thead>
-		<tbody>
-			<t:loop source="announcements" value="announcement">
-				<tr><td>
-					<a t:type="actionlink" t:id="select" context="announcement.id">${announcement.title}</a>
-    			</td>
-    			<td>${announcement.active}</td>
-    			<td>${announcement.showAfterDate}</td>
-    			<td>${announcement.showBeforeDate}</td>
-    			<td>${announcement.modifiedBy}</td>
-    			<td>${announcement.modifiedDate}</td></tr>
-    		</t:loop>
-    	</tbody>
-    </table>
+	<t:grid source="announcements" rowsPerPage="20" row="announcement" 
+		include="title,active,showAfterDate,showBeforeDate,modifiedBy,modifiedDate">
+		<p:titleCell>
+			<t:pageLink t:page="announcement/Details" t:context="announcement.id">${announcement.title}</t:pageLink>
+		</p:titleCell>
+	</t:grid>
 
 </html>
