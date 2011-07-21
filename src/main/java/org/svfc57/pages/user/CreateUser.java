@@ -19,15 +19,23 @@
 
 package org.svfc57.pages.user;
 
+import java.awt.Component;
 import java.util.List;
 
+import org.apache.tapestry5.SelectModel;
+import org.apache.tapestry5.ValueEncoder;
+import org.apache.tapestry5.annotations.InjectComponent;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Log;
+import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.corelib.components.Zone;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.springframework.security.access.annotation.Secured;
 import org.svfc57.api.UserService;
 import org.svfc57.dao.PersonDAO;
+import org.svfc57.encoders.PersonEncoder;
+import org.svfc57.encoders.PersonSelectModel;
 import org.svfc57.entities.Person;
 import org.svfc57.entities.User;
 
@@ -37,9 +45,9 @@ public class CreateUser {
 	@Property
 	private User user;
 
-	private List<Person> getPersonsWithNoUserAccount() {
-		return personDao.findPersonsWithNoUserAccount();
-	}
+	@Persist
+	@Property
+	private Person selectedPerson;
 	
 	@InjectPage
 	private Index index;
@@ -50,11 +58,33 @@ public class CreateUser {
 	@Inject
 	private PersonDAO personDao;
 	
+	@InjectComponent
+	private Zone personSelectedZone;
+	
 	@Log
 	Object onSuccess() {
+
 		
-		uds.addUser(user);
-		return index;
+		//uds.addUser(user);
+		return null;// index;
 		
 	}
+
+	@Log
+	public ValueEncoder<Person> getPersonEncoder() {
+		return new PersonEncoder(personDao);
+	}
+
+	@Log
+	public SelectModel getPersonSelectModel() {
+		return new PersonSelectModel(personDao.findPersonsWithNoUserAccount());
+	}
+	
+	@Log
+	Object onValueChangedFromPersonSelection(Person person) {
+		//selectedPerson = personDao.findPerson(Long.parseLong(personId));
+		selectedPerson = person;
+		return personSelectedZone.getBody();
+	}
+
 }

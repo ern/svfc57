@@ -25,8 +25,17 @@
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
         <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
-	
-	<t:beaneditform object="user"
+	<t:form>
+		<t:select t:id="personSelection" t:value="selectedPerson" t:model="PersonSelectModel" t:encoder="PersonEncoder"
+			t:zone="personSelectedZone" t:blankOption="ALWAYS" t:blankLabel="Choose..." t:validate="required"/>
+			
+			<t:zone t:id="personSelectedZone" id="personSelectedZone" style="display: inline;">
+				<t:if test="selectedPerson">
+					<p>Selected: ${selectedPerson.firstName}, ${selectedPerson.lastName}</p>
+				</t:if>
+			</t:zone>
+	</t:form>
+	<!-- <t:beaneditform object="user"
 		reorder="userName,password,accountNonLocked,enabled" submitlabel="message:submit-label"/>
-
+ -->
 </html>
