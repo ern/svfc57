@@ -18,3 +18,5 @@
 --
 
 insert into USER (USERNAME, PASSWORD, ENABLED, ACCOUNTNONLOCKED, ACCOUNTNONEXPIRED, CREDENTIALSNONEXPIRED, AUTHORITY) values ('admin', '3f0149558bb3967a270a5014507f1911399b283f', true, true, true, true, 'ROLE_ADMIN');
+insert into Person (city, email, firstName, lastName, phone, state, streetOne, zip) values ( 'Wallkill', 'earle.nietzel@gmail.com', 'Earle', 'Nietzel', '845-866-1957', 'NY', '1233 Hoagerburgh Rd', '12589');
+
