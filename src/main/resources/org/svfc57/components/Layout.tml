@@ -29,66 +29,71 @@
         <title>${title}</title>
     </head>
     <body>
-        <!-- start header -->
-        <div id="header">
-        	<div id="adminmenu">
-            	<t:security.ifloggedin>
-					<!-- this area is only visible to logged in users -->
-					<t:pagelink page="person/index">People</t:pagelink>
-					<t:pagelink page="user/index">Users</t:pagelink>
-					<t:pagelink page="announcement/index">Announcements</t:pagelink>
-				</t:security.ifloggedin>
-        	</div>
-        	<div id="login">
-            	<span>
-            	<t:security.ifloggedin>
-					<!-- this area is only visible to logged in users -->
-					Hello, ${userName}&nbsp;|&nbsp;<t:pageLink page="logout">Logout</t:pageLink>
-				<t:parameter name="else">
-					<!-- this block is visible if you are not logged in -->
-					<t:pagelink page="login">Login</t:pagelink>
-				</t:parameter>
-				</t:security.ifloggedin>
-				</span>
-            </div>
-        	<br />
-            <div id="logo">
-                <h1>57</h1>
-                <h2>
-                    <t:pagelink page="index">Shawangunk Valley Fire Company</t:pagelink>
-                </h2>
-            </div>
-            <div id="menu">
-                <ul>
-                	<li><t:pagelink page="Index">Home</t:pagelink></li>
-                    <li t:type="loop" source="pageNames" value="pageName" class="prop:classForPageName">
-                        <t:pagelink page="prop:pageName">${pageName}</t:pagelink>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- end header -->
-        <!-- start page -->
-        <div id="page">
-            <div id="content">
-                <div id="colOne">
-                    <div class="title">
-                        <h2>${title}</h2>
-                    </div>
-                    <div class="entry">
-                        <t:body/>
-                    </div>
-   			    </div>
-               	<!-- need to adjust width in css 
-               	<div id="colTwo">
-			      	<h2>Events</h2>
-                </div> -->
-            </div>
-            <!-- end content -->
-            <br style="clear: both;"/>
-        </div>
-        <!-- end page -->
-        <!-- start footer -->
+    	<!-- start wrapper -->
+		<div id="wrapper">   
+	        <!-- start header -->
+    	    <div id="header">
+        		<div id="adminmenu">
+            		<t:security.ifloggedin>
+						<!-- this area is only visible to logged in users -->
+						<t:pagelink page="person/index">People</t:pagelink>
+						<t:pagelink page="user/index">Users</t:pagelink>
+						<t:pagelink page="announcement/index">Announcements</t:pagelink>
+					</t:security.ifloggedin>
+	        	</div>
+	 	       	<div id="login">
+    	        	<span>
+        	    	<t:security.ifloggedin>
+						<!-- this area is only visible to logged in users -->
+						Hello, ${userName}&nbsp;|&nbsp;<t:pageLink page="logout">Logout</t:pageLink>
+					<t:parameter name="else">
+						<!-- this block is visible if you are not logged in -->
+						<t:pagelink page="login">Login</t:pagelink>
+					</t:parameter>
+					</t:security.ifloggedin>
+					</span>
+	            </div>
+    	    	<br />
+	            <div id="logo">
+    	            <h1>57</h1>
+        	        <h2>
+            	        <t:pagelink page="index">Shawangunk Valley Fire Company</t:pagelink>
+                	</h2>
+    	        </div>
+	            <div id="menu">
+	                <ul>
+    	            	<li><t:pagelink page="Index">Home</t:pagelink></li>
+        	            <li t:type="loop" source="pageNames" value="pageName" class="prop:classForPageName">
+            	            <t:pagelink page="prop:pageName">${pageName}</t:pagelink>
+                	    </li>
+	                </ul>
+    	        </div>
+	        </div>
+	        <!-- end header -->
+	        <!-- start page -->
+	        <div id="page">
+            	<div id="content">
+	                <div id="colOne">
+    	                <div class="title">
+        	                <h2>${title}</h2>
+            	        </div>
+                	    <div class="entry">
+                    	    <t:body/>
+	                    </div>
+   				    </div>
+	               	<!-- need to adjust width in css 
+    	           	<div id="colTwo">
+				      	<h2>Events</h2>
+            	    </div> -->
+	            </div>
+    	        <!-- end content -->
+        	    <br style="clear: both;"/>
+	        </div>
+	        <div id="push"/>
+	        <!-- end page -->
+	    <!-- end wrapper -->
+	    </div>
+    	    <!-- start footer -->
         <div id="footer">
             <p class="legal">
                 &copy;2011 Shawangunk Valley Fire Company. All Rights Reserved.
