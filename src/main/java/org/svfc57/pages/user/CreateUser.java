@@ -19,9 +19,6 @@
 
 package org.svfc57.pages.user;
 
-import java.awt.Component;
-import java.util.List;
-
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.ValueEncoder;
 import org.apache.tapestry5.annotations.InjectComponent;
@@ -61,13 +58,19 @@ public class CreateUser {
 	@InjectComponent
 	private Zone personSelectedZone;
 	
+	Object onCanceled() {
+		return index;
+	}
+	
 	@Log
 	Object onSuccess() {
 
-		
-		//uds.addUser(user);
-		return null;// index;
-		
+		selectedPerson.setUser(user);
+		user.setPerson(selectedPerson);
+		// no need to call addUser as updating person will cascade to user
+		personDao.update(selectedPerson);
+		selectedPerson = null;
+		return index;
 	}
 
 	@Log

@@ -70,4 +70,14 @@ public class Person {
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="USER_ID")
 	public User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		if (user != null) {
+			this.user = user;
+		}
+	}
 }

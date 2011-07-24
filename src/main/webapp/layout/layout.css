@@ -302,6 +302,10 @@ DIV.t-beaneditor {
 	border: none;
 }
 
+.t-beaneditor-submit {
+	margin-left: 250px;
+}
+
 TABLE.t-data-grid {
 	background-color: black;
 	background: none;

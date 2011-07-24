@@ -26,15 +26,27 @@
         <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
 	<t:form>
-		<t:select t:id="personSelection" t:value="selectedPerson" t:model="PersonSelectModel" t:encoder="PersonEncoder"
-			t:zone="personSelectedZone" t:blankOption="ALWAYS" t:blankLabel="Choose..." t:validate="required"/>
-			
-			<t:zone t:id="personSelectedZone" id="personSelectedZone" style="display: inline;">
-				<t:if test="selectedPerson">
-					<p>Selected: ${selectedPerson.firstName}, ${selectedPerson.lastName}</p>
-				</t:if>
-			</t:zone>
+		<div class="t-beaneditor-row">
+			<p>To add a new user account:</p>
+			<ol>
+				<li>Select someone from the list below.</li>
+				<li>Fill out the remaining information.</li>
+			</ol>
+			<br/>
+			<t:label for="personSelection">Select a person</t:label>
+			<t:select t:id="personSelection" t:value="selectedPerson" t:model="PersonSelectModel" t:encoder="PersonEncoder"
+				t:zone="personSelectedZone" t:blankOption="ALWAYS" t:blankLabel="Choose..." t:validate="required"/>
+		</div>
 	</t:form>
+
+	<t:zone t:id="personSelectedZone" id="personSelectedZone" style="display: inline;">
+		<t:if test="selectedPerson">
+ 			<!-- <div class="t-beaneditor-row"><label>Now add the following details for</label> ${selectedPerson.firstName} ${selectedPerson.lastName}</div> -->
+			<t:beaneditform object="user" cancel="true"
+				reorder="userName,password,accountNonLocked,enabled" submitlabel="message:submit-label"/>
+		</t:if>
+	</t:zone>
+
 	<!-- <t:beaneditform object="user"
 		reorder="userName,password,accountNonLocked,enabled" submitlabel="message:submit-label"/>
  -->

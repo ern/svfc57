@@ -32,6 +32,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
+import org.apache.tapestry5.beaneditor.Validate;
 import org.apache.tapestry5.ioc.internal.util.CollectionFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
@@ -46,15 +47,25 @@ public class User implements UserDetails {
 	@Column(name="USER_ID")
 	public long id;
 	
+	@Validate("required")
 	public String username;
+	
+	@Validate("required")
 	public String password;
+	
+	@Validate("required")
 	public boolean enabled;
+	
+	@Validate("required")
 	public boolean accountNonLocked;
 	
+	@Validate("required")
 	public boolean accountNonExpired;
 	
+	@Validate("required")
 	public boolean credentialsNonExpired;
 	
+	@NonVisual
 	@OneToOne(mappedBy="user")
 	public Person person;
 		
@@ -129,5 +140,15 @@ public class User implements UserDetails {
 
 	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
 		this.credentialsNonExpired = credentialsNonExpired;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		if (person != null) {
+			this.person = person;
+		}
 	}
 }
