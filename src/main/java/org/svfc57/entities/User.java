@@ -37,6 +37,7 @@ import org.apache.tapestry5.ioc.internal.util.CollectionFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.svfc57.model.Role;
 
 @Entity
 public class User implements UserDetails {
@@ -69,8 +70,9 @@ public class User implements UserDetails {
 	@OneToOne(mappedBy="user")
 	public Person person;
 		
-	@NonVisual
-	public String authority;
+	//@NonVisual
+	@Validate("required")
+	public Role role;
 	//@OneToMany
 	//public Set<Authority> roles;
 /*	
@@ -84,7 +86,7 @@ public class User implements UserDetails {
 */
 	public Collection<GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> authorities = CollectionFactory.newList();
-		authorities.add(new GrantedAuthorityImpl(authority));
+		authorities.add(new GrantedAuthorityImpl(role.toString()));
 		return authorities;
 	}
 	
@@ -150,5 +152,13 @@ public class User implements UserDetails {
 		if (person != null) {
 			this.person = person;
 		}
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 }

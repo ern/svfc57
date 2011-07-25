@@ -21,14 +21,18 @@ package org.svfc57.pages.user;
 
 import java.util.List;
 
+import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.util.EnumSelectModel;
 import org.springframework.security.access.annotation.Secured;
 import org.svfc57.api.UserService;
 import org.svfc57.dao.PersonDAO;
 import org.svfc57.entities.Person;
 import org.svfc57.entities.User;
+import org.svfc57.model.Role;
 
 @Secured("ROLE_ADMIN")
 public class Index {
@@ -44,6 +48,9 @@ public class Index {
 	
 	@InjectPage
 	private UserDetails details;
+	
+	@Inject 
+	private Messages messages;
 
 	public List<Person> getPersonsWithNoUserAccount() {
 		return personDao.findPersonsWithNoUserAccount();
@@ -59,4 +66,7 @@ public class Index {
 		return details;
 	}
 	
+	public SelectModel getRoles() {
+		return new EnumSelectModel(Role.class, messages);
+	}
 }

@@ -19,13 +19,17 @@
 
 package org.svfc57.pages.user;
 
+import org.apache.tapestry5.ComponentResources;
+import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Property;
+import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.util.EnumSelectModel;
 import org.springframework.security.access.annotation.Secured;
 import org.svfc57.api.UserService;
-import org.svfc57.dao.UserDAO;
 import org.svfc57.entities.User;
+import org.svfc57.model.Role;
 
 @Secured("ROLE_ADMIN")
 public class UserDetails {
@@ -40,7 +44,13 @@ public class UserDetails {
 	
 	@Inject 
 	private UserService uds;
-
+	
+	@Inject 
+	private Messages messages;
+	
+	@Inject
+	private ComponentResources resources;
+	
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}
@@ -57,7 +67,16 @@ public class UserDetails {
 	
 	public Object onSuccess() {
 		uds.updateUser(user);
-		
+		resources.discardPersistentFieldChanges();
 		return index;
+	}
+	
+	Object onCanceled() {
+		resources.discardPersistentFieldChanges();
+		return index;
+	}
+	
+	public SelectModel getRoles() {
+		return new EnumSelectModel(Role.class, messages);
 	}
 }
