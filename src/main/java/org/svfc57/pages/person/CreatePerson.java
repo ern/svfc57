@@ -19,6 +19,7 @@
 
 package org.svfc57.pages.person;
 
+import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Log;
 import org.apache.tapestry5.annotations.Property;
@@ -39,10 +40,19 @@ public class CreatePerson {
 	@InjectPage
 	private Index index;
 	
+	@Inject
+	private ComponentResources resources;
+	
 	@Log
 	Object onSuccess() {
 		dao.create(person);
-		
+		resources.discardPersistentFieldChanges();
+		return index;
+	}
+
+	@Log
+	Object onCanceled() {
+		resources.discardPersistentFieldChanges();
 		return index;
 	}
 	

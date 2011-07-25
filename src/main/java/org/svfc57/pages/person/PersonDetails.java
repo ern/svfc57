@@ -19,6 +19,7 @@
 
 package org.svfc57.pages.person;
 
+import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -39,6 +40,9 @@ public class PersonDetails {
 	
 	@InjectPage
 	private Index index;
+	
+	@Inject
+	private ComponentResources resources;
 
 	public void setPersonId(long personId) {
 		this.personId = personId;
@@ -53,9 +57,14 @@ public class PersonDetails {
 		return personId;
 	}
 	
-	public Object onSuccess() {
+	Object onSuccess() {
 		dao.update(person);
-		
+		resources.discardPersistentFieldChanges();
+		return index;
+	}
+
+	Object onCanceled() {
+		resources.discardPersistentFieldChanges();
 		return index;
 	}
 }

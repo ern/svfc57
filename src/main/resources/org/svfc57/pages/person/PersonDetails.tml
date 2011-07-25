@@ -25,6 +25,6 @@
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
         <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
-	<t:beaneditform object="person"
+	<t:beaneditform object="person" cancel="true"
 		reorder="firstName,lastName,streetOne,streetTwo,city,state,zip,email,phone" submitlabel="message:submit-label"/>
 </html>
