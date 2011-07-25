@@ -19,15 +19,15 @@
 
 -->
 
-<html t:type="layout" title="List People"
+<html t:type="layout" title="People"
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
       xmlns:p="tapestry:parameter">
 
-	<t:pagelink page="person/create" style="padding-right: 10px;">Create Person</t:pagelink>
+	<br/>
+	<t:pagelink page="person/create" style="padding-right: 10px;">New Person</t:pagelink>
 	<br/><br/>
-	
 	<t:grid source="persons" rowsPerPage="20" row="person" 
-		include="firstName,lastName,streetOne,streetTwo,city,state,zip,email,phone">
+		include="firstName,lastName,streetOne,city,email,phone">
 		<p:firstNameCell>
 			<t:pageLink t:page="person/Details" t:context="person.id">${person.firstName}</t:pageLink>
 		</p:firstNameCell>

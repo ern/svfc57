@@ -24,12 +24,14 @@
       xmlns:p="tapestry:parameter">
 
 	<t:if test="personsWithNoUserAccount">
-		<t:pagelink page="user/create" style="padding-right: 10px;">Create User</t:pagelink>
+		<br/>
+		<t:pagelink page="user/create" style="padding-right: 10px;">New User</t:pagelink>
+		<br/>
 		<p:else>
 			There are no available people without a User Account, please add another person first.
 		</p:else>
+		<br/>
 	</t:if>
-	<br/><br/>
 	
 	<t:grid source="users" rowsPerPage="20" row="user" 
 		include="username,role,enabled,accountNonLocked,accountNonExpired,credentialsNonExpired">

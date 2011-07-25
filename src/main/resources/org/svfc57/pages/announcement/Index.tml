@@ -26,7 +26,8 @@
       xmlns:p="tapestry:parameter">
         <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
-	<t:pagelink page="announcement/create" style="padding-right: 10px;">Create Announcement</t:pagelink>
+	<br/>
+	<t:pagelink page="announcement/create" style="padding-right: 10px;">New Announcement</t:pagelink>
 	<br/><br/>
 
 	<t:grid source="announcements" rowsPerPage="20" row="announcement" 
