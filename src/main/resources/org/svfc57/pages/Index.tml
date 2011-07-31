@@ -28,7 +28,6 @@
 
 	<t:loop source="currentActiveAnnouncements" value="announcement">
 	    <br/>
-		<h3>${announcement.title}</h3>
 		<p><t:outputraw value="announcement.text" /></p>
 		<div class="credits">
 			<p class="file"><small>${announcement.modifiedDate}</small></p>
