@@ -49,6 +49,7 @@ FCKConfig.ToolbarSets["Default"] = [
 
 FCKConfig.ContextMenu = [];
 FCKConfig.ToolbarSets["Default"] = [
+                                    ['Source','Preview'],
                                     ['Style','FontFormat','FontName','FontSize'],
                                     ['TextColor','BGColor'],
                                     '/',
