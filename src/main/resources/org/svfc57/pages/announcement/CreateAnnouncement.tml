@@ -27,7 +27,12 @@
 	
 	<br/>
 	<t:beaneditform object="announcement" cancel="true" 
-		include="title,text,active,showAfterDate,showBeforeDate" submitlabel="message:submit-label" />
+ 		include="title,text,active,showAfterDate,showBeforeDate" submitlabel="message:submit-label">
+	 	<t:parameter name="text">
+			<t:label for="text"/>
+			<textarea t:type="easyfck/fckeditor" t:id="text" t:value="announcement.text" configuration="fckConfig"/>
+		</t:parameter>
+	 </t:beaneditform>
 	
 
 </html>

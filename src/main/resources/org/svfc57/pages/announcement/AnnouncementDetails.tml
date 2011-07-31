@@ -25,6 +25,12 @@
       xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
         <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
-	<t:beaneditform object="announcement" reorder="title,text,active,showAfterDate,showBeforeDate" submitlabel="message:submit-label" />
-
+	<br/>
+	<t:beaneditform object="announcement" cancel="true" 
+ 		include="title,text,active,showAfterDate,showBeforeDate" submitlabel="message:submit-label">
+	 	<t:parameter name="text">
+			<t:label for="text"/>
+			<textarea t:type="easyfck/fckeditor" t:id="text" t:value="announcement.text" configuration="fckConfig"/>
+		</t:parameter>
+	 </t:beaneditform>
 </html>

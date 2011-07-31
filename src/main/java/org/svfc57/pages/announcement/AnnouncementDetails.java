@@ -19,7 +19,9 @@
 
 package org.svfc57.pages.announcement;
 
+import org.apache.tapestry5.Asset2;
 import org.apache.tapestry5.annotations.InjectPage;
+import org.apache.tapestry5.annotations.Path;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.springframework.security.access.annotation.Secured;
@@ -39,6 +41,11 @@ public class AnnouncementDetails {
 	
 	@InjectPage
 	private Index index;
+	
+	@Property
+    @Inject
+    @Path("context:layout/js/fckconfig.js")
+	private Asset2 fckConfig;
 
 	public void setAnnouncementId(long announcementId) {
 		this.announcementId = announcementId;
