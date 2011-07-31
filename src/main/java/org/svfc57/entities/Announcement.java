@@ -25,6 +25,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -40,14 +42,11 @@ public class Announcement {
 	public long id;
 	
 	@Temporal(TemporalType.DATE)
-	public Date createDate;
-	
-	@Temporal(TemporalType.DATE)
 	public Date modifiedDate;
 
-	public long createdBy;
-	
-	public long modifiedBy;
+	@ManyToOne(targetEntity=User.class)
+	@JoinColumn(name="USER_ID")
+	public User modifiedBy;
 
 	@Validate("required")
 	public String title;
@@ -68,5 +67,77 @@ public class Announcement {
 	
 	@NonVisual
 	public boolean deleted;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public Date getShowAfterDate() {
+		return showAfterDate;
+	}
+
+	public void setShowAfterDate(Date showAfterDate) {
+		this.showAfterDate = showAfterDate;
+	}
+
+	public Date getShowBeforeDate() {
+		return showBeforeDate;
+	}
+
+	public void setShowBeforeDate(Date showBeforeDate) {
+		this.showBeforeDate = showBeforeDate;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+	public User getModifiedBy() {
+		return modifiedBy;
+	}
+
+	public void setModifiedBy(User modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
 	
 }

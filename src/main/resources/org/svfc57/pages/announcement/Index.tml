@@ -31,10 +31,11 @@
 	<br/><br/>
 
 	<t:grid source="announcements" rowsPerPage="20" row="announcement" 
-		include="title,active,showAfterDate,showBeforeDate,modifiedBy,modifiedDate">
+		include="title,active,showAfterDate,showBeforeDate,modifiedDate" add="modifiedBy">
 		<p:titleCell>
 			<t:pageLink t:page="announcement/Details" t:context="announcement.id">${announcement.title}</t:pageLink>
 		</p:titleCell>
+		<p:modifiedByCell>${announcement.getModifiedBy().getUsername()}</p:modifiedByCell>
 	</t:grid>
 
 </html>

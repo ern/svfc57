@@ -21,36 +21,53 @@ package org.svfc57.pages.announcement;
 
 import java.util.Date;
 
+import org.apache.tapestry5.ComponentResources;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Log;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.svfc57.dao.AnnouncementDAO;
 import org.svfc57.entities.Announcement;
+import org.svfc57.entities.User;
 
 @Secured("ROLE_ADMIN")
 public class CreateAnnouncement {
 	@Property
 	private Announcement announcement;
+
+	private Authentication currentUser;
 	
 	@Inject
 	private AnnouncementDAO dao;
 	
+	@Inject
+	private ComponentResources resources;
+	
 	@InjectPage
 	private Index index;
 
-	public void onActivate() {
+	void setupRender() {
 		announcement = new Announcement();
-		announcement.active = true;
-		announcement.showAfterDate = new Date();
+		announcement.setActive(true);
+		announcement.setShowAfterDate(new Date());
 	}
 	
 	@Log
 	Object onSuccess() {
+		currentUser = SecurityContextHolder.getContext().getAuthentication();
+		announcement.setModifiedDate(new Date());
+		announcement.setModifiedBy((User) currentUser.getPrincipal());
 		dao.create(announcement);
-		
+		resources.discardPersistentFieldChanges();
 		return index;
 	}
 
+	@Log
+	Object onCanceled() {
+		resources.discardPersistentFieldChanges();
+		return index;
+	}
 }
