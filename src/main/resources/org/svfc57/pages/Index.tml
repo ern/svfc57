@@ -25,13 +25,15 @@
         <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
     <p>${message:greeting}</p>
-
+	<br/>
+	
 	<t:loop source="currentActiveAnnouncements" value="announcement">
-	    <br/>
-		<p><t:outputraw value="announcement.text" /></p>
-		<div class="credits">
-			<p class="file"><small>${announcement.modifiedDate}</small></p>
-			<p class="posted">Posted by: ${announcement.modifiedBy.username}</p>
+	    <div class="announcements">
+			<t:outputraw value="announcement.text" />
+			<div class="credits">
+				<p class="file"><small>${announcement.modifiedDate}</small></p>
+				<p class="posted">Posted by: ${announcement.modifiedBy.username}</p>
+	    	</div>
 	    </div>
 	</t:loop>
 

@@ -200,6 +200,10 @@ a:hover {
 	margin-bottom: 50px;
 	padding: 5px 0 8px 8px;
 	background: #210100;
+	/* border-left: 2px solid #8A0600; */
+}
+
+#colOne .announcements {
 	border-left: 2px solid #8A0600;
 }
 
@@ -270,6 +274,7 @@ a:hover {
 
 .announcements {
 	width: 100%;
+	
 }
 
 /* Footer */
