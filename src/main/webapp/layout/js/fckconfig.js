@@ -49,10 +49,16 @@ FCKConfig.ToolbarSets["Default"] = [
 
 FCKConfig.ContextMenu = [];
 FCKConfig.ToolbarSets["Default"] = [
-                                    ['Source','Preview'],
-                                    ['Style','FontFormat','FontName','FontSize'],
-                                    ['TextColor','BGColor'],
-                                    '/',
-                                    ['Bold','Italic','Underline'],
-                                    ['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
-];
+                     ['Source','Preview','-','Cut','Copy','Paste','PasteText','PasteWord','-','Print','SpellCheck'],
+                     ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+                     '/',
+                     ['Bold','Italic','Underline','StrikeThrough','-','Subscript','Superscript'],
+                     ['OrderedList','UnorderedList','-','Outdent','Indent','Blockquote'],
+                     ['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
+                     ['Link','Unlink','Anchor'],
+                     ['Image','Flash','Table','Rule','Smiley','SpecialChar'],
+                     '/',
+                     ['Style','FontFormat','FontName','FontSize'],
+                     ['TextColor','BGColor'],
+                     ['FitWindow','ShowBlocks','-','About']
+                     ];
