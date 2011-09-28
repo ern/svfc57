@@ -30,7 +30,6 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Zone;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.apache.tapestry5.util.EnumSelectModel;
 import org.springframework.security.access.annotation.Secured;
 import org.svfc57.api.UserService;
 import org.svfc57.dao.PersonDAO;
@@ -38,9 +37,8 @@ import org.svfc57.encoders.PersonEncoder;
 import org.svfc57.encoders.PersonSelectModel;
 import org.svfc57.entities.Person;
 import org.svfc57.entities.User;
-import org.svfc57.model.Role;
 
-@Secured("ROLE_ADMIN")
+@Secured("PERM_ADD_USER")
 public class CreateUser {
 
 	@Property
@@ -99,9 +97,5 @@ public class CreateUser {
 		//selectedPerson = personDao.findPerson(Long.parseLong(personId));
 		selectedPerson = person;
 		return personSelectedZone.getBody();
-	}
-
-	public SelectModel getRoles() {
-		return new EnumSelectModel(Role.class, messages);
 	}
 }

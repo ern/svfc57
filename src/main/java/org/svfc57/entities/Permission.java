@@ -16,9 +16,25 @@
  * You should have received a copy of the GNU General Public License
  * along with SVFC57.  If not, see <http://www.gnu.org/licenses/>.
  */
+package org.svfc57.entities;
 
-package org.svfc57.model;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-public enum Role {
-	ROLE_ADMIN, ROLE_USER
+import org.apache.tapestry5.beaneditor.NonVisual;
+
+@Entity
+public class Permission {
+
+	@NonVisual
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="PERMISSION_ID")
+	public long id;
+
+	public String name;
 }

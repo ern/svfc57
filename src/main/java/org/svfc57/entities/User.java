@@ -21,6 +21,7 @@ package org.svfc57.entities;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -29,6 +30,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 import org.apache.tapestry5.beaneditor.NonVisual;
@@ -37,7 +40,6 @@ import org.apache.tapestry5.ioc.internal.util.CollectionFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.svfc57.model.Role;
 
 @Entity
 public class User implements UserDetails {
@@ -70,26 +72,23 @@ public class User implements UserDetails {
 	@OneToOne(mappedBy="user")
 	public Person person;
 		
-	//@NonVisual
-	@Validate("required")
-	public Role role;
-	//@OneToMany
-	//public Set<Authority> roles;
-/*	
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="USER_ROLE",
+			   joinColumns=@JoinColumn(name="USER_ID"),
+			   inverseJoinColumns=@JoinColumn(name="ROLE_ID"))
+	public Set<Role> roles;
+
+	@Override
 	public Collection<GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> authorities = CollectionFactory.newList();
-		for (Authority role : roles) {
-			authorities.add(new GrantedAuthorityImpl(role.getAuthority()));
+		for (Role r : roles) {	
+			for (Permission p : r.permissions) {
+				authorities.add(new GrantedAuthorityImpl(p.name));
+			}
 		}
 		return authorities;
 	}
-*/
-	public Collection<GrantedAuthority> getAuthorities() {
-		List<GrantedAuthority> authorities = CollectionFactory.newList();
-		authorities.add(new GrantedAuthorityImpl(role.toString()));
-		return authorities;
-	}
-	
+
 	@Override
 	public String getPassword() {
 		return password;
@@ -154,11 +153,11 @@ public class User implements UserDetails {
 		}
 	}
 
-	public Role getRole() {
-		return role;
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setRole(Set<Role> roles) {
+		this.roles = roles;
 	}
 }

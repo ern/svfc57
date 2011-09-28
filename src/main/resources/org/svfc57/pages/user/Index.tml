@@ -34,7 +34,7 @@
 	</t:if>
 	
 	<t:grid source="users" rowsPerPage="20" row="user" 
-		include="username,role,enabled,accountNonLocked,accountNonExpired,credentialsNonExpired">
+		include="username,enabled,accountNonLocked,accountNonExpired,credentialsNonExpired">
 		<p:usernameCell>
 			<t:pageLink t:page="user/Details" t:context="user.id">${user.username}</t:pageLink>
 		</p:usernameCell>

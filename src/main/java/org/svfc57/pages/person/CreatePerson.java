@@ -28,7 +28,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.svfc57.dao.PersonDAO;
 import org.svfc57.entities.Person;
 
-@Secured("ROLE_ADMIN")
+@Secured("PERM_ADD_PERSON")
 public class CreatePerson {
 
 	@Property

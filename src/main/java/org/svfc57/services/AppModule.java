@@ -37,6 +37,8 @@ import org.apache.tapestry5.services.RequestFilter;
 import org.apache.tapestry5.services.RequestHandler;
 import org.apache.tapestry5.services.Response;
 import org.slf4j.Logger;
+import org.springframework.security.access.AccessDecisionVoter;
+import org.springframework.security.access.vote.RoleVoter;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
@@ -187,5 +189,14 @@ public class AppModule
 			@InjectService("DaoAuthenticationProvider") AuthenticationProvider daoAuthenticationProvider) {
 
 		configuration.add("daoAuthenticationProvider", daoAuthenticationProvider);
-	}   
+	}
+	
+	public static void contributeAccessDecisionManager( 
+			OrderedConfiguration<AccessDecisionVoter> configuration ) {
+
+		RoleVoter voter = new RoleVoter();
+		voter.setRolePrefix("PERM_");
+        configuration.add( "RoleVoter", voter );
+    }
+
 }

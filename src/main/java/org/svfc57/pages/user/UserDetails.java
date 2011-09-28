@@ -20,18 +20,15 @@
 package org.svfc57.pages.user;
 
 import org.apache.tapestry5.ComponentResources;
-import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.annotations.InjectPage;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
-import org.apache.tapestry5.util.EnumSelectModel;
 import org.springframework.security.access.annotation.Secured;
 import org.svfc57.api.UserService;
 import org.svfc57.entities.User;
-import org.svfc57.model.Role;
 
-@Secured("ROLE_ADMIN")
+@Secured("PERM_UPDT_USER")
 public class UserDetails {
 
 	@Property
@@ -74,9 +71,5 @@ public class UserDetails {
 	Object onCanceled() {
 		resources.discardPersistentFieldChanges();
 		return index;
-	}
-	
-	public SelectModel getRoles() {
-		return new EnumSelectModel(Role.class, messages);
 	}
 }

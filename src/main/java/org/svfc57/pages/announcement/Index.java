@@ -29,7 +29,7 @@ import org.svfc57.dao.AnnouncementDAO;
 import org.svfc57.entities.Announcement;
 import org.svfc57.pages.announcement.AnnouncementDetails;
 
-@Secured("ROLE_ADMIN")
+@Secured({"PERM_VIEW_ANNOUNCEMENT"})
 public class Index {
 
 	@Inject

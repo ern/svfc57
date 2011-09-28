@@ -35,7 +35,7 @@ import org.svfc57.dao.AnnouncementDAO;
 import org.svfc57.entities.Announcement;
 import org.svfc57.entities.User;
 
-@Secured("ROLE_ADMIN")
+@Secured({"PERM_ADD_ANNOUNCEMENT"})
 public class CreateAnnouncement {
 	@Property
 	private Announcement announcement;

@@ -26,5 +26,5 @@
         <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
 
 	<t:beaneditform object="user" cancel="true"
-		reorder="userName,password,role,accountNonLocked,enabled" submitlabel="message:submit-label"/>
+		reorder="userName,password,accountNonLocked,enabled" submitlabel="message:submit-label"/>
 </html>

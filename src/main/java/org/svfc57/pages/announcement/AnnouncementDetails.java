@@ -28,7 +28,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.svfc57.dao.AnnouncementDAO;
 import org.svfc57.entities.Announcement;
 
-@Secured("ROLE_ADMIN")
+@Secured({"PERM_UPDT_ANNOUNCEMENT"})
 public class AnnouncementDetails {
 
 	@Property
