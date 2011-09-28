@@ -16,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with SVFC57.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package org.svfc57.entities;
 
 import javax.persistence.Column;
@@ -23,8 +24,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
 import org.apache.tapestry5.beaneditor.NonVisual;
 
 @Entity
