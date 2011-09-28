@@ -196,7 +196,8 @@ public class AppModule
 
 		RoleVoter voter = new RoleVoter();
 		voter.setRolePrefix("PERM_");
-        configuration.add( "RoleVoter", voter );
+		// Override the default Voter "ROLE_" with our own "PERM_" 
+        configuration.override("RoleVoter", voter);
     }
 
 }
