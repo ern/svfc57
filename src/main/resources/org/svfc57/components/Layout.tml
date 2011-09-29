@@ -36,9 +36,18 @@
         		<div id="adminmenu">
             		<t:security.ifloggedin>
 						<!-- this area is only visible to logged in users -->
-						<t:pagelink page="person/index">People</t:pagelink>
-						<t:pagelink page="user/index">Users</t:pagelink>
-						<t:pagelink page="announcement/index">Announcements</t:pagelink>
+						<t:security.ifRole role="PERM_VIEW_ANNOUNCEMENT">
+							<t:pagelink page="announcement/index">Announcements</t:pagelink>
+						</t:security.ifRole>
+						<t:security.ifRole role="PERM_VIEW_PERSON">
+							<t:pagelink page="person/index">People</t:pagelink>
+						</t:security.ifRole>
+						<t:security.ifRole role="PERM_VIEW_USER">
+							<t:pagelink page="user/index">Users</t:pagelink>
+						</t:security.ifRole>
+						<t:security.ifRole role="PERM_VIEW_GROUP">
+							<t:pagelink page="group/index">Groups</t:pagelink>
+						</t:security.ifRole>
 					</t:security.ifloggedin>
 	        	</div>
 	 	       	<div id="login">
