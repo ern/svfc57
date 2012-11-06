@@ -1,0 +1,43 @@
+<!--
+
+    Copyright (C) 2011 Earle Nietzel <earle.nietzel@gmail.com>
+
+    This file is part of SVFC57.
+
+    SVFC57 is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SVFC57 is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SVFC57.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+
+<html t:type="layout" title="Groups"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd"
+      xmlns:p="tapestry:parameter">
+
+<!-- 	<t:if test="personsWithNoUserAccount">
+		<br/>
+		<t:pagelink page="user/create" style="padding-right: 10px;">New User</t:pagelink>
+		<br/>
+		<p:else>
+			There are no available people without a User Account, please add another person first.
+		</p:else>
+		<br/>
+	</t:if>
+ -->	
+<!-- 	<t:grid source="users" rowsPerPage="20" row="user" 
+		include="username,enabled,accountNonLocked,accountNonExpired,credentialsNonExpired">
+		<p:usernameCell>
+			<t:pageLink t:page="user/Details" t:context="user.id">${user.username}</t:pageLink>
+		</p:usernameCell>
+	</t:grid> 
+-->
+</html>

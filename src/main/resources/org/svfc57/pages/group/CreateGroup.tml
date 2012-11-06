@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+
+    Copyright (C) 2011 Earle Nietzel <earle.nietzel@gmail.com>
+
+    This file is part of SVFC57.
+
+    SVFC57 is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SVFC57 is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SVFC57.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html t:type="layout" title="Create Group"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_1_0.xsd">
+        <!-- Most of the page content, including <head>, <body>, etc. tags, comes from Layout.tml -->
+
+<!-- 	<t:form>
+		<div class="t-beaneditor-row">
+			<p>To add a new user account:</p>
+			<ol>
+				<li>Select someone from the list below.</li>
+				<li>Fill out the remaining information.</li>
+			</ol>
+			<br/>
+			<t:label for="personSelection">Select a person</t:label>
+			<t:select t:id="personSelection" t:value="selectedPerson" t:model="PersonSelectModel" t:encoder="PersonEncoder"
+				t:zone="personSelectedZone" t:blankOption="ALWAYS" t:blankLabel="Choose..." t:validate="required"/>
+		</div>
+	</t:form>
+
+	<t:zone t:id="personSelectedZone" id="personSelectedZone" style="display: inline;">
+		<t:if test="selectedPerson">
+ 			<div class="t-beaneditor-row"><label>Now add the following details for</label> ${selectedPerson.firstName} ${selectedPerson.lastName}</div>
+			<t:beaneditform object="user" cancel="true"
+				reorder="userName,password,accountNonLocked,enabled" submitlabel="message:submit-label"/>
+		</t:if>
+	</t:zone>
+ -->
+	<!-- <t:beaneditform object="user"
+		reorder="userName,password,accountNonLocked,enabled" submitlabel="message:submit-label"/>
+ -->
+</html>
